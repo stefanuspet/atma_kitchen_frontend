@@ -1,12 +1,11 @@
 import useClient from ".";
-const token = localStorage.getItem("token");
 
 export const GetResep = async () => {
   try {
     const res = await useClient.get("/resep", {
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     });
     return res.data.data;
@@ -20,7 +19,7 @@ export const ResepCreate = async (formData) => {
     const res = await useClient.post("/resep", formData, {
       headers: {
         "Content-Type": "multipart/form-data",
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     });
     return {
@@ -37,7 +36,7 @@ export const ResepUpdate = async (id, formData) => {
     const res = await useClient.post(`/resep/${id}`, formData, {
       headers: {
         "Content-Type": "multipart/form-data",
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     });
     return {
@@ -54,7 +53,7 @@ export const ResepDelete = async (id) => {
     const res = await useClient.delete(`/resep/${id}`, {
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     });
     return res.data;
@@ -68,7 +67,7 @@ export const getResepById = async (id) => {
     const res = await useClient.get(`/resep/${id}`, {
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     });
     return res.data.data;
@@ -82,7 +81,7 @@ export const searchResep = async (search) => {
     const res = await useClient.get(`/resep/search/${search}`, {
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     });
     return res.data.data;
