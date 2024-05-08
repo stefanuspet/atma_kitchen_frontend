@@ -6,6 +6,7 @@ import ProtectedRoutes from "./ProtectedRoute";
 import DashboardAdminLayout from "../Layout/DashboardAdminLayout";
 import Produk from "../pages/adminPage/produk/Produk";
 import LoginPage from "../pages/LoginPage";
+import RegisterPage from "../pages/RegisterPage";
 import CreateProduk from "../pages/adminPage/produk/CreateProduk";
 import EditProduk from "../pages/adminPage/produk/EditProduk";
 import DashboardManagerLayout from "../Layout/DashboardManagerLayout";
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <LoginPage />,
+  },
+  {
+    path: "/register",
+    element: <RegisterPage />,
   },
   {
     path: "/dashboard-admin",

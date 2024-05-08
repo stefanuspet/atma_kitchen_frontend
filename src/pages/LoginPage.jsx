@@ -33,8 +33,10 @@ const LoginPage = () => {
           navigate("/dashboard-manager");
         } else if (res.abilities === "OWNER") {
           navigate("/dashboard-owner");
+        } else if (res.abilities === "Customer") {
+          navigate("/home");
         }
-        console.log(res.token, "loin sukses");
+        console.log(res.token, "Login sukses");
         console.log(res.abilities, "abilities");
       })
       .catch((err) => {
@@ -136,7 +138,7 @@ const LoginPage = () => {
                 className="text-[#AD773D] font-serif text-right mt-1 mb-8 hover:teks-[#AD773D]"
                 style={{ fontSize: "14px" }}
               >
-                Lupa Password
+                Lupa Password?
               </Link>
             </div>
           </form>
