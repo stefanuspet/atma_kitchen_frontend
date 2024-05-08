@@ -20,6 +20,9 @@ import CreatePenitip from "../pages/managerPage/penitip/CreatePenitip";
 import EditPenitip from "../pages/managerPage/penitip/EditPenitip";
 import ProdukPenitip from "../pages/adminPage/produkPenitip/ProdukPenitip";
 import CreateProdukPenitip from "../pages/adminPage/produkPenitip/CreateProdukPenitip";
+import BahanBaku from "../pages/adminPage/bahanbaku/BahanBaku";
+import CreateBahanBaku from "../pages/adminPage/bahanbaku/CreateBahanBaku";
+import EditBahanBaku from "../pages/adminPage/bahanbaku/EditBahanBaku";
 
 const router = createBrowserRouter([
   {
@@ -69,6 +72,18 @@ const router = createBrowserRouter([
       {
         path: "/dashboard-admin/produk-penitip/edit/:id",
         element: <EditProduk />,
+      },
+      {
+        path: "/dashboard-admin/bahanbaku",
+        element: <BahanBaku />,
+      },
+      {
+        path: "/dashboard-admin/bahanbaku/create",
+        element: <CreateBahanBaku />,
+      },
+      {
+        path: "/dashboard-admin/bahanbaku/edit/:id",
+        element: <EditBahanBaku />,
       },
     ],
   },
