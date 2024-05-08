@@ -15,6 +15,9 @@ import CreateKaryawan from "../pages/managerPage/karyawan/CreateKaryawan";
 import EditKaryawan from "../pages/managerPage/karyawan/EditKaryawan";
 import DashboardOwnerLayout from "../Layout/DashboardOwnerLayout";
 import Gaji from "../pages/ownerPage/gaji/Gaji";
+import BahanBaku from "../pages/adminPage/bahanbaku/BahanBaku";
+import CreateBahanBaku from "../pages/adminPage/bahanbaku/CreateBahanBaku";
+import EditBahanBaku from "../pages/adminPage/bahanbaku/EditBahanBaku";
 
 const router = createBrowserRouter([
   {
@@ -53,6 +56,18 @@ const router = createBrowserRouter([
         path: "/dashboard-admin/produk/edit/:id",
         element: <EditProduk />,
       },
+      {
+        path: "/dashboard-admin/bahanbaku",
+        element: <BahanBaku />,
+      },
+      {
+        path: "/dashboard-admin/bahanbaku/create",
+        element: <CreateBahanBaku />,
+      },
+      {
+        path: "/dashboard-admin/bahanbaku/edit/:id",
+        element: <EditBahanBaku />,
+      }
     ],
   },
   {
