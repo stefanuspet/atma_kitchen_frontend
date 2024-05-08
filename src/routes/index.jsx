@@ -15,6 +15,11 @@ import CreateKaryawan from "../pages/managerPage/karyawan/CreateKaryawan";
 import EditKaryawan from "../pages/managerPage/karyawan/EditKaryawan";
 import DashboardOwnerLayout from "../Layout/DashboardOwnerLayout";
 import Gaji from "../pages/ownerPage/gaji/Gaji";
+import Penitip from "../pages/managerPage/penitip/Penitip";
+import CreatePenitip from "../pages/managerPage/penitip/CreatePenitip";
+import EditPenitip from "../pages/managerPage/penitip/EditPenitip";
+import ProdukPenitip from "../pages/adminPage/produkPenitip/ProdukPenitip";
+import CreateProdukPenitip from "../pages/adminPage/produkPenitip/CreateProdukPenitip";
 
 const router = createBrowserRouter([
   {
@@ -53,6 +58,18 @@ const router = createBrowserRouter([
         path: "/dashboard-admin/produk/edit/:id",
         element: <EditProduk />,
       },
+      {
+        path: "/dashboard-admin/produk-penitip",
+        element: <ProdukPenitip />,
+      },
+      {
+        path: "/dashboard-admin/produk-penitip/create",
+        element: <CreateProdukPenitip />,
+      },
+      {
+        path: "/dashboard-admin/produk-penitip/edit/:id",
+        element: <EditProduk />,
+      },
     ],
   },
   {
@@ -78,6 +95,18 @@ const router = createBrowserRouter([
       {
         path: "/dashboard-manager/karyawan/edit/:id",
         element: <EditKaryawan />,
+      },
+      {
+        path: "/dashboard-manager/penitip",
+        element: <Penitip />,
+      },
+      {
+        path: "/dashboard-manager/penitip/create",
+        element: <CreatePenitip />,
+      },
+      {
+        path: "/dashboard-manager/penitip/edit/:id",
+        element: <EditPenitip />,
       },
     ],
   },

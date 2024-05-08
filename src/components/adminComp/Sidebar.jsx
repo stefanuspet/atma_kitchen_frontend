@@ -7,6 +7,7 @@ import { FaClipboardList } from "react-icons/fa";
 import { GiShoppingBag } from "react-icons/gi";
 import { FaSignOutAlt } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { GiChipsBag } from "react-icons/gi";
 import { logout } from "../../api/auth";
 
 const Sidebar = () => {
@@ -40,6 +41,16 @@ const Sidebar = () => {
               <div className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                 <FaShoppingBag />
                 <span className="flex-1 ms-3 whitespace-nowrap">Produk</span>
+              </div>
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/dashboard-admin/produk-penitip">
+              <div className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                <GiChipsBag />
+                <span className="flex-1 ms-3 whitespace-nowrap">
+                  Produk Penitip
+                </span>
               </div>
             </NavLink>
           </li>
