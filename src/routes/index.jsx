@@ -23,6 +23,7 @@ import CreateProdukPenitip from "../pages/adminPage/produkPenitip/CreateProdukPe
 import BahanBaku from "../pages/adminPage/bahanbaku/BahanBaku";
 import CreateBahanBaku from "../pages/adminPage/bahanbaku/CreateBahanBaku";
 import EditBahanBaku from "../pages/adminPage/bahanbaku/EditBahanBaku";
+import EditProdukPenitip from "../pages/adminPage/produkPenitip/EditProdukPenitip";
 
 const router = createBrowserRouter([
   {
@@ -68,6 +69,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard-admin/produk-penitip/create",
         element: <CreateProdukPenitip />,
+      },
+      {
+        path: "/dashboard-admin/produk-penitip/edit/:id",
+        element: <EditProdukPenitip />,
       },
       {
         path: "/dashboard-admin/produk-penitip/edit/:id",

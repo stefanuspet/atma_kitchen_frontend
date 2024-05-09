@@ -4,7 +4,8 @@ import { FaPlus } from "react-icons/fa";
 import { FaTrash } from "react-icons/fa";
 import { FaPencilAlt } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
-import { ProdukPenitip } from "../../../api/produkPenitip";
+import { ProdukPenitip, ProdukPenitipDelete } from "../../../api/produkPenitip";
+import { getProdukPenitipImage } from "../../../api";
 
 const penitipPenitip = () => {
   const [penitip, setPenitip] = useState([]);
@@ -32,7 +33,7 @@ const penitipPenitip = () => {
   };
 
   const handleDelete = (id) => {
-    PenitipDelete(id).then(() => {
+    ProdukPenitipDelete(id).then(() => {
       fetchData();
 
       toast.success("penitip Berhasil Dihapus", {
@@ -51,6 +52,7 @@ const penitipPenitip = () => {
   const fetchData = async () => {
     const response = await ProdukPenitip();
     setPenitip(response);
+    console.log(response);
   };
 
   useEffect(() => {
@@ -156,7 +158,7 @@ const penitipPenitip = () => {
               <div className="w-full h-52 overflow-hidden">
                 <img
                   className="rounded-t-lg"
-                  src={getpenitipImage(item.image)}
+                  src={getProdukPenitipImage(item.gambar_produk)}
                   alt="test"
                   width={500}
                   height={500}
@@ -166,24 +168,27 @@ const penitipPenitip = () => {
               <div className="p-5">
                 <a href="#">
                   <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                    {item.nama_penitip}
+                    {item.nama_produk}
                   </h5>
                 </a>
                 <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                  harga : {item.harga_penitip}
+                  harga : {item.harga_produk}
                 </p>
                 <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                  stok : {item.stok_penitip}
+                  stok : {item.stok_produk}
+                </p>
+                <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                  nama penitip : {item.penitip}
                 </p>
                 <div className="flex justify-end gap-x-2">
                   <NavLink
-                    to={`/dashboard-admin/penitip/edit/${item.id_penitip}`}
+                    to={`/dashboard-admin/produk-penitip/edit/${item.id_produk_penitip}`}
                     className="p-2 rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                   >
                     <FaPencilAlt className="text-white" />
                   </NavLink>
                   <div
-                    onClick={() => handleDelete(item.id_penitip)}
+                    onClick={() => handleDelete(item.id_produk_penitip)}
                     className=" p-2 rounded-lg bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800"
                   >
                     <FaTrash className="text-white" />

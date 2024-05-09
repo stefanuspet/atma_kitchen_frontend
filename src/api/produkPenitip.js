@@ -1,10 +1,25 @@
 import useClient from ".";
 
+export const GetPenitip = async () => {
+  try {
+    const res = await useClient.get("/penitip_search", {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
+    return res.data.data;
+  } catch (error) {
+    return error.response.data;
+  }
+};
+
 export const ProdukPenitip = async () => {
   try {
     const res = await useClient.get("/produk_penitip", {
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     });
     return res.data.data;
@@ -18,6 +33,7 @@ export const ProdukPenitipCreate = async (formData) => {
     const res = await useClient.post("/produk_penitip", formData, {
       headers: {
         "Content-Type": "multipart/form-data",
+        // "Content-Type": "application/json",
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     });
@@ -67,6 +83,7 @@ export const ProdukPenitipSearch = async (search) => {
     const res = await useClient.get(`/produk_penitip?search=${search}`, {
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     });
     return res.data.data;
