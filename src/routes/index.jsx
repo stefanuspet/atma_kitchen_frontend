@@ -25,6 +25,9 @@ import EditProdukPenitip from "../pages/adminPage/produkPenitip/EditProdukPeniti
 import BahanBaku from "../pages/adminPage/bahanbaku/BahanBaku";
 import CreateBahanBaku from "../pages/adminPage/bahanbaku/CreateBahanBaku";
 import EditBahanBaku from "../pages/adminPage/bahanbaku/EditBahanBaku";
+import EditProdukPenitip from "../pages/adminPage/produkPenitip/EditProdukPenitip";
+import Hampers from "../pages/adminPage/hampers/Hampers";
+import ForgotPasswordPage from "../pages/ForgotPasswordPage";
 import Hampers from "../pages/adminPage/hampers/Hampers";
 import ForgotPasswordPage from "../pages/ForgotPasswordPage";
 import Resep from "../pages/adminPage/resep/Resep";
@@ -99,22 +102,6 @@ const router = createBrowserRouter([
       {
         path: "/dashboard-admin/bahanbaku/edit/:id",
         element: <EditBahanBaku />,
-      },
-      {
-        path: "/dashboard-admin/hampers",
-        element: <Hampers />,
-      },
-      {
-        path: "/dashboard-admin/resep",
-        element: <Resep />,
-      },
-      {
-        path: "/dashboard-admin/resep/create",
-        element: <CreateResep />,
-      },
-      {
-        path: "/dashboard-admin/resep/edit/:id",
-        element: <EditResep />,
       },
     ],
   },

@@ -232,4 +232,4 @@ const EditProduk_penitipPenitip = () => {
   );
 };
 
-export default EditProduk_penitipPenitip;
+export default EditProdukPenitip;
