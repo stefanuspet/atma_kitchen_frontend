@@ -48,10 +48,9 @@ export const ProdukPenitipCreate = async (formData) => {
 
 export const ProdukPenitipUpdate = async (id, formData) => {
   try {
-    const res = await useClient.put(`/produk_penitip/${id}`, formData, {
+    const res = await useClient.post(`/produk_penitip/${id}`, formData, {
       headers: {
         "Content-Type": "multipart/form-data",
-        "Content-Type ": "application/json",
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     });

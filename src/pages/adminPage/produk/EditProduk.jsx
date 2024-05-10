@@ -48,6 +48,35 @@ const EditProduk = () => {
     }
 
     ProdukUpdate(param.id, formDatatoSend).then((res) => {
+      if (formData.stok_produk < 0) {
+        toast.error("Stok tidak boleh kurang dari 0", {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
+        return;
+      }
+
+      // harga tidak boleh kurang dari 0
+      if (formData.harga_produk < 0) {
+        toast.error("Harga tidak boleh kurang dari 0", {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
+        return;
+      }
+
       if (res.success) {
         toast.success("Produk berhasil diupdate", {
           position: "top-right",
