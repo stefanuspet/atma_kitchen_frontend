@@ -47,6 +47,7 @@ const penitipPenitip = () => {
     return;
   };
 
+  console.log("isi dari penitip search", penitipSearch);
   const handleClearSearch = () => {
     setSearch("");
     setPenitipSearch([]);

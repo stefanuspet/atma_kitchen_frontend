@@ -27,6 +27,9 @@ import EditBahanBaku from "../pages/adminPage/bahanbaku/EditBahanBaku";
 import EditProdukPenitip from "../pages/adminPage/produkPenitip/EditProdukPenitip";
 import Hampers from "../pages/adminPage/hampers/Hampers";
 import ForgotPasswordPage from "../pages/ForgotPasswordPage";
+import CreateHampers from "../pages/adminPage/hampers/CreateHampers";
+import EditHampers from "../pages/adminPage/hampers/EditHampers";
+import AddProdukHampers from "../pages/adminPage/hampers/AddProdukHampers";
 
 const router = createBrowserRouter([
   {
@@ -104,6 +107,18 @@ const router = createBrowserRouter([
       {
         path: "/dashboard-admin/hampers",
         element: <Hampers />,
+      },
+      {
+        path: "/dashboard-admin/hampers/create",
+        element: <CreateHampers />,
+      },
+      {
+        path: "/dashboard-admin/hampers/edit/:id",
+        element: <EditHampers />,
+      },
+      {
+        path: "/dashboard-admin/hampers/createproduk/:id",
+        element: <AddProdukHampers />,
       },
     ],
   },
