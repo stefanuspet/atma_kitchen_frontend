@@ -14,7 +14,7 @@ export const GetPenitip = async () => {
   }
 };
 
-export const ProdukPenitip = async () => {
+export const ProdukPenitipGet = async () => {
   try {
     const res = await useClient.get("/produk_penitip", {
       headers: {
@@ -48,10 +48,9 @@ export const ProdukPenitipCreate = async (formData) => {
 
 export const ProdukPenitipUpdate = async (id, formData) => {
   try {
-    const res = await useClient.put(`/produk_penitip/${id}`, formData, {
+    const res = await useClient.post(`/produk_penitip/${id}`, formData, {
       headers: {
         "Content-Type": "multipart/form-data",
-        "Content-Type ": "application/json",
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     });
@@ -80,7 +79,7 @@ export const ProdukPenitipDelete = async (id) => {
 
 export const ProdukPenitipSearch = async (search) => {
   try {
-    const res = await useClient.get(`/produk_penitip?search=${search}`, {
+    const res = await useClient.get(`/produk_penitip/search/${search}`, {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${localStorage.getItem("token")}`,

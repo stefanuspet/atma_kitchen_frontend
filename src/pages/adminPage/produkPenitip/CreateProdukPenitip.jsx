@@ -21,7 +21,7 @@ const CreateProdukPenitip = () => {
       [e.target.name]: e.target.value,
     }));
 
-    console.log(formData, "form data dorp");
+    console.log(formData, "form data drop");
   };
 
   const handleImageChange = (e) => {
@@ -51,6 +51,34 @@ const CreateProdukPenitip = () => {
     e.preventDefault();
 
     ProdukPenitipCreate(formData).then((res) => {
+      if (formData.stok_produk_penitip <= 0) {
+        toast.error("Stok tidak boleh kurang dari 1", {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
+        return;
+      }
+      // harga_produk_penitip <= 0
+      if (formData.harga_produk_penitip <= 0) {
+        toast.error("Harga tidak boleh kurang dari 1", {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
+        return;
+      }
+
       if (res.success) {
         toast.success("Produk Penitip berhasil ditambahkan", {
           position: "top-right",
@@ -82,12 +110,12 @@ const CreateProdukPenitip = () => {
     console.log(formData);
   };
 
-  console.log("formdatat", formData);
+  console.log("formdata", formData);
 
   return (
     <>
       <div className="w-full relative">
-        <h1 className="text-2xl font-bold">Create Produk</h1>
+        <h1 className="text-2xl font-bold">Create Produk Penitip</h1>
         <form
           onSubmit={(e) => {
             handleSubmit(e);

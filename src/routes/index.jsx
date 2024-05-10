@@ -4,9 +4,9 @@ import { ToastContainer } from "react-toastify";
 import DashboardAdmin from "../pages/adminPage/DashboardAdmin";
 import ProtectedRoutes from "./ProtectedRoute";
 import DashboardAdminLayout from "../Layout/DashboardAdminLayout";
-import Produk from "../pages/adminPage/produk/Produk";
 import LoginPage from "../pages/LoginPage";
 import RegisterPage from "../pages/RegisterPage";
+import Produk from "../pages/adminPage/produk/Produk";
 import CreateProduk from "../pages/adminPage/produk/CreateProduk";
 import EditProduk from "../pages/adminPage/produk/EditProduk";
 import DashboardManagerLayout from "../Layout/DashboardManagerLayout";
@@ -21,10 +21,15 @@ import CreatePenitip from "../pages/managerPage/penitip/CreatePenitip";
 import EditPenitip from "../pages/managerPage/penitip/EditPenitip";
 import ProdukPenitip from "../pages/adminPage/produkPenitip/ProdukPenitip";
 import CreateProdukPenitip from "../pages/adminPage/produkPenitip/CreateProdukPenitip";
+import EditProdukPenitip from "../pages/adminPage/produkPenitip/EditProdukPenitip";
 import BahanBaku from "../pages/adminPage/bahanbaku/BahanBaku";
 import CreateBahanBaku from "../pages/adminPage/bahanbaku/CreateBahanBaku";
 import EditBahanBaku from "../pages/adminPage/bahanbaku/EditBahanBaku";
-import EditProdukPenitip from "../pages/adminPage/produkPenitip/EditProdukPenitip";
+import Hampers from "../pages/adminPage/hampers/Hampers";
+import ForgotPasswordPage from "../pages/ForgotPasswordPage";
+import Resep from "../pages/adminPage/resep/Resep";
+import CreateResep from "../pages/adminPage/resep/CreateResep";
+import EditResep from "../pages/adminPage/resep/EditResep";
 
 const router = createBrowserRouter([
   {
@@ -42,6 +47,10 @@ const router = createBrowserRouter([
   {
     path: "/register",
     element: <RegisterPage />,
+  },
+  {
+    path: "/forgotpassword",
+    element: <ForgotPasswordPage />,
   },
   {
     path: "/dashboard-admin",
@@ -80,10 +89,6 @@ const router = createBrowserRouter([
         element: <EditProdukPenitip />,
       },
       {
-        path: "/dashboard-admin/produk-penitip/edit/:id",
-        element: <EditProduk />,
-      },
-      {
         path: "/dashboard-admin/bahanbaku",
         element: <BahanBaku />,
       },
@@ -94,6 +99,22 @@ const router = createBrowserRouter([
       {
         path: "/dashboard-admin/bahanbaku/edit/:id",
         element: <EditBahanBaku />,
+      },
+      {
+        path: "/dashboard-admin/hampers",
+        element: <Hampers />,
+      },
+      {
+        path: "/dashboard-admin/resep",
+        element: <Resep />,
+      },
+      {
+        path: "/dashboard-admin/resep/create",
+        element: <CreateResep />,
+      },
+      {
+        path: "/dashboard-admin/resep/edit/:id",
+        element: <EditResep />,
       },
     ],
   },

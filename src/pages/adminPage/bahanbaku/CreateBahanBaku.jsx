@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 const CreateBahanBaku = () => {
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
-        bahan_baku: "",
+        nama_bahan_baku: "",
         jumlah_tersedia: "",
         satuan_bahan: "",
         harga_satuan: "",
@@ -23,7 +23,7 @@ const CreateBahanBaku = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         const formDatatoSend = new FormData();
-        formDatatoSend.append("bahan_baku", formData.bahan_baku);
+        formDatatoSend.append("nama_bahan_baku", formData.nama_bahan_baku);
         formDatatoSend.append("jumlah_tersedia", formData.jumlah_tersedia);
         formDatatoSend.append("satuan_bahan", formData.satuan_bahan);
         formDatatoSend.append("harga_satuan", formData.harga_satuan);
@@ -63,7 +63,7 @@ const CreateBahanBaku = () => {
 
     const handleClearForm = () => {
         setFormData({
-            bahan_baku: "",
+            nama_bahan_baku: "",
             jumlah_tersedia: "",
             satuan_bahan: "",
             harga_satuan: "",
@@ -81,19 +81,19 @@ const CreateBahanBaku = () => {
             >
                 <div className="mb-5">
                     <label
-                        htmlFor="bahan_baku"
+                        htmlFor="nama_bahan_baku"
                         className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                     >
                         Nama Bahan Baku
                     </label>
                     <input
                         type="text"
-                        id="bahan_baku"
-                        name="bahan_baku"
+                        id="nama_bahan_baku"
+                        name="nama_bahan_baku"
                         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="Nama Bahan Baku"
                         required
-                        value={formData.bahan_baku}
+                        value={formData.nama_bahan_baku}
                         onChange={handleChange}
                     />
                 </div>

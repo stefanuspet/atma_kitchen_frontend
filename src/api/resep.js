@@ -1,6 +1,66 @@
 import useClient from ".";
 
-export const GetResep = async () => {
+export const GetBahanBaku = async () => {
+  try {
+    const res = await useClient.get("/bahan_baku_search", {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
+    return res.data.data;
+  } catch (error) {
+    return error.response.data;
+  }
+};
+
+// export const GetBahanBaku = async () => {
+//   try {
+//     const res = await useClient.get("/bahan_baku_search", {
+//       headers: {
+//         "Content-Type": "application/json",
+//         Authorization: `Bearer ${localStorage.getItem("token")}`,
+//       },
+//     });
+//     return Array.isArray(res.data.data) ? res.data.data : [];
+//   } catch (error) {
+//     return error.response.data;
+//   }
+// };
+
+// export const GetBahanBaku = async () => {
+//   try {
+//     const res = await useClient.get("/bahan_baku_search", {
+//       headers: {
+//         "Content-Type": "application/json",
+//         Authorization: `Bearer ${localStorage.getItem("token")}`,
+//       },
+//     });
+//     return res.data.data.map(item => ({
+//       id_bahan_baku: item.id_bahan_baku,
+//       nama_bahan_baku: item.nama_bahan_baku
+//     }));
+//   } catch (error) {
+//     return error.response.data;
+//   }
+// };
+
+
+export const GetProduk = async () => {
+  try {
+    const res = await useClient.get("/produk_search", {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
+    return res.data.data;
+  } catch (error) {
+    return error.response.data;
+  }
+};
+
+export const ResepGet = async () => {
   try {
     const res = await useClient.get("/resep", {
       headers: {
@@ -22,14 +82,28 @@ export const ResepCreate = async (formData) => {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     });
-    return {
-      success: true,
-      data: res.status,
-    };
+    return res.data; // Mengembalikan data yang diterima dari backend
   } catch (error) {
     return error.response.data;
   }
 };
+
+// export const ResepCreate = async (formData) => {
+//   try {
+//     const res = await useClient.post("/resep", formData, {
+//       headers: {
+//         "Content-Type": "multipart/form-data",
+//         Authorization: `Bearer ${localStorage.getItem("token")}`,
+//       },
+//     });
+//     return {
+//       success: true,
+//       data: res.status,
+//     };
+//   } catch (error) {
+//     return error.response.data;
+//   }
+// };
 
 export const ResepUpdate = async (id, formData) => {
   try {
@@ -76,7 +150,7 @@ export const getResepById = async (id) => {
   }
 };
 
-export const searchResep = async (search) => {
+export const ResepSearch = async (search) => {
   try {
     const res = await useClient.get(`/resep/search/${search}`, {
       headers: {

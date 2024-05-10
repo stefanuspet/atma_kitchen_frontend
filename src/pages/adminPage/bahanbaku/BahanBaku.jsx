@@ -23,9 +23,6 @@ const BahanBaku = () => {
             });
     };
 
-
-
-
     const handleInputSearch = async (e) => {
         const searchValue = e.target.value.trim();
         console.log(searchValue, "searchValue");
@@ -66,7 +63,7 @@ const BahanBaku = () => {
     }, []);
 
     const handleDelete = (id) => {
-        console.log(id, "delet");
+        console.log(id, "delete");
         BahanbakuDelete(id)
             .then(() => {
                 fetchData();
@@ -131,7 +128,7 @@ const BahanBaku = () => {
                             <div className="p-5">
                                 <a href="#">
                                     <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                                        {item.bahan_baku}
+                                        {item.nama_bahan_baku}
                                     </h5>
                                 </a>
                                 <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
@@ -172,7 +169,7 @@ const BahanBaku = () => {
                         <div className="p-5">
                             <a href="#">
                                 <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                                    {item.bahan_baku}
+                                    {item.nama_bahan_baku}
                                 </h5>
                             </a>
                             <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">

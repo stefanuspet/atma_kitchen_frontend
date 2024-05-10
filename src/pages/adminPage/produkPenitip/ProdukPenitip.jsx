@@ -4,38 +4,59 @@ import { FaPlus } from "react-icons/fa";
 import { FaTrash } from "react-icons/fa";
 import { FaPencilAlt } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
-import { ProdukPenitip, ProdukPenitipDelete } from "../../../api/produkPenitip";
-import { getProdukPenitipImage } from "../../../api";
+import {
+  ProdukPenitipGet,
+  ProdukPenitipDelete,
+  ProdukPenitipSearch,
+} from "../../../api/produkPenitip";
+import { getProdukPenitipImage } from "../../../api/index";
 
-const penitipPenitip = () => {
-  const [penitip, setPenitip] = useState([]);
-  const [penitipSearch, setPenitipSearch] = useState([]);
+const ProdukPenitip = () => {
+  const [produkPenitip, setProdukPenitip] = useState([]);
+  const [produkPenitipSearch, setProdukPenitipSearch] = useState([]);
   const [search, setSearch] = useState("");
   const [isfound, setIsfound] = useState(true);
 
   const handleInputSearch = (e) => {
-    setSearch(e.target.value);
-    const search = penitip.filter((item) => {
-      return item.nama_penitip.toLowerCase().includes(e.target.value);
-    });
-    if (search) {
-      setPenitipSearch(search);
-      setIsfound(true);
-    } else {
+    const searchValue = e.target.value.trim();
+    setSearch(searchValue);
+    setIsfound(true);
+    if (searchValue === "") {
+      setProdukPenitipSearch([]);
       setIsfound(false);
+      setSearch(false);
+      return;
     }
+
+    ProdukPenitipSearch(searchValue)
+      .then((res) => {
+        if (res.length > 0) {
+          setProdukPenitipSearch(res);
+          console.log(res, "search");
+          setIsfound(true);
+          setSearch(true);
+        } else {
+          setIsfound(false);
+          setProdukPenitipSearch([]);
+          setSearch(true);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    return;
   };
 
   const handleClearSearch = () => {
     setSearch("");
-    setPenitipSearch([]);
+    setProdukPenitipSearch([]);
     document.getElementById("search").value = "";
   };
 
   const handleDelete = (id) => {
     ProdukPenitipDelete(id).then(() => {
       fetchData();
-
+      setProdukPenitipSearch([]);
       toast.success("penitip Berhasil Dihapus", {
         position: "top-right",
         autoClose: 5000,
@@ -50,8 +71,8 @@ const penitipPenitip = () => {
   };
 
   const fetchData = async () => {
-    const response = await ProdukPenitip();
-    setPenitip(response);
+    const response = await ProdukPenitipGet();
+    setProdukPenitip(response);
     console.log(response);
   };
 
@@ -97,7 +118,7 @@ const penitipPenitip = () => {
             Produk penitip Tidak Ditemukan !
           </h1>
           <div className="grid grid-cols-3 gap-7 pt-5">
-            {penitipSearch.map((item, index) => (
+            {produkPenitipSearch.map((item, index) => (
               <div
                 key={index}
                 className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 w-72"
@@ -105,7 +126,7 @@ const penitipPenitip = () => {
                 <div className="w-full h-52 overflow-hidden">
                   <img
                     className="rounded-t-lg"
-                    src={getpenitipImage(item.image)}
+                    src={getProdukPenitipImage(item.gambar_produk_penitip)}
                     alt="test"
                     width={500}
                     height={500}
@@ -119,18 +140,21 @@ const penitipPenitip = () => {
                 <div className="p-5">
                   <a href="#">
                     <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                      {item.nama_penitip}
+                      {item.nama_produk_penitip}
                     </h5>
                   </a>
                   <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                    harga : {item.harga_penitip}
+                    harga : {item.harga_produk_penitip}
                   </p>
                   <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                    stok : {item.stok_penitip}
+                    stok : {item.stok_produk_penitip}
+                  </p>
+                  <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                    nama penitip : {item.nama_penitip}
                   </p>
                   <div className="flex justify-end gap-x-2">
                     <NavLink
-                      to={`/dashboard-admin/penitip/edit/${item.id}`}
+                      to={`/dashboard-admin/produk-penitip/edit/${item.id}`}
                       className="p-2 rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                     >
                       <FaPencilAlt className="text-white" />
@@ -150,7 +174,7 @@ const penitipPenitip = () => {
         <h1 className="text-xl font-bold pt-10 pb-2">Semua Produk Penitip</h1>
         <div className="h-0.5 bg-white"></div>
         <div className="grid grid-cols-3 gap-7 pt-5">
-          {penitip.map((item, index) => (
+          {produkPenitip.map((item, index) => (
             <div
               key={index}
               className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 w-72"
@@ -203,4 +227,4 @@ const penitipPenitip = () => {
   );
 };
 
-export default penitipPenitip;
+export default ProdukPenitip;
