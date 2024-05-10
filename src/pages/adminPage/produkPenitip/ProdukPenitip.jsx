@@ -5,7 +5,7 @@ import { FaTrash } from "react-icons/fa";
 import { FaPencilAlt } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import {
-  ProdukPenitip,
+  ProdukPenitipGet,
   ProdukPenitipDelete,
   ProdukPenitipSearch,
 } from "../../../api/produkPenitip";
