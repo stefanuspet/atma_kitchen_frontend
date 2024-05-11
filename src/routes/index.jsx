@@ -27,6 +27,7 @@ import EditBahanBaku from "../pages/adminPage/bahanbaku/EditBahanBaku";
 import EditProdukPenitip from "../pages/adminPage/produkPenitip/EditProdukPenitip";
 import Hampers from "../pages/adminPage/hampers/Hampers";
 import ForgotPasswordPage from "../pages/ForgotPasswordPage";
+import CreatePasswordPage from "../pages/CreatePasswordPage";
 import CreateHampers from "../pages/adminPage/hampers/CreateHampers";
 import EditHampers from "../pages/adminPage/hampers/EditHampers";
 import AddProdukHampers from "../pages/adminPage/hampers/AddProdukHampers";
@@ -55,6 +56,10 @@ const router = createBrowserRouter([
   {
     path: "/forgotpassword",
     element: <ForgotPasswordPage />,
+  },
+  {
+    path: "/customers/verify/:token",
+    element: <CreatePasswordPage />,
   },
   {
     path: "/dashboard-admin",

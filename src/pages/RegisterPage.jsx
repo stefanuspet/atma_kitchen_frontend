@@ -1,151 +1,82 @@
 import React, { useState } from "react";
-import HomePageLayout from "../Layout/HomePageLayout";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
+import axios from "axios";
 
-export default function Page() {
-  const [showPassword, setShowPassword] = useState(false);
-  const [fullName, setFullName] = useState("");
+const ForgotPasswordPage = () => {
   const [email, setEmail] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [error, setError] = useState("");
+  const [message, setMessage] = useState("");
 
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post("/api/customers/forget-password", {
+        email: email,
+      });
+      console.log(response.data);
+      setMessage(response.data.message);
+    } catch (error) {
+      console.error(error.response.data);
+      setMessage(error.response.data.message);
+    }
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    if (!fullName.trim() || !email.trim() || !phoneNumber.trim() || !password.trim() || !confirmPassword.trim()) {
-      setError("All fields are required.");
-      return;
-    }
-
-    if (password !== confirmPassword) {
-      setError("Passwords do not match.");
-      return;
-    }
-
-    console.log("Full Name:", fullName);
-    console.log("Email:", email);
-    console.log("Phone Number:", phoneNumber);
-    console.log("Password:", password);
-    console.log("Confirm Password:", confirmPassword);
-
-    setFullName("");
-    setEmail("");
-    setPhoneNumber("");
-    setPassword("");
-    setConfirmPassword("");
-    setError("");
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
   };
 
   return (
-    <>
-      <HomePageLayout>
-        <div className="flex justify-center items-center h-screen w-full">
-            <div className="bg-white rounded-3xl p-8 mt-20 md:w-[50rem] h-[24rem] bg-opacity-70 w-full">
-            <h1 className="text-[#AD773D] font-bold font-serif text-center mb-0.5 text-3xl">
-                REGISTER
-            </h1>
-            <hr style={{ borderWidth: '1.5px' }} />
-            <p
-                className="text-[#171832] font-serif text-center mt-1"
-                style={{ fontSize: '16px' }}
-            >
-                WELCOME
-            </p>
-            <p className="text-[#171832] font-serif text-center mb-6" style={{ fontSize: '12px' }}>Help us fill in your undefined</p>
-            <form onSubmit={handleSubmit}>
-                <div className="mb-4 grid grid-cols-3 gap-4" >
-                <input
-                    type="text"
-                    placeholder="Enter your full name"
-                    value={fullName}
-                    onChange={(e) => setFullName(e.target.value)}
-                    className="col-span-1 p-2 rounded-2xl bg-[#AD773D] backdrop-blur-md placeholder-slate-950 text-black"
-                    style={{ borderRadius: '20px' }}
-                />
-                <input
-                    type="email"
-                    placeholder="Enter your email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    className="col-span-1 p-2 rounded-2xl bg-[#AD773D] backdrop-blur-md placeholder-slate-950 text-black"
-                    style={{ borderRadius: '20px' }}
-                />
-                <input
-                    type="number"
-                    placeholder="Enter your number"
-                    value={phoneNumber}
-                    onChange={(e) => setPhoneNumber(e.target.value)}
-                    className="col-span-1 p-2 rounded-2xl bg-[#AD773D] backdrop-blur-md placeholder-slate-950 text-black"
-                    style={{ borderRadius: '20px' }}
-                />
-                </div>
-                <div className="mb-4 grid grid-cols-2 gap-4 relative">
-                <input 
-                    type={showPassword ?"text" : "password"}
-                    placeholder="Create your password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    className="col-span-1 p-2 rounded-2xl bg-[#AD773D] backdrop-blur-md placeholder-slate-950 text-black"
-                    style={{ borderRadius: '20px' }} 
-                />
-                <div className="absolute left-80 top-1/2 transform -translate-y-1/2">
-                    {showPassword ? (
-                    <FaEyeSlash onClick={togglePasswordVisibility} />
-                    ) : (
-                    <FaEye onClick={togglePasswordVisibility} />
-                    )}
-                </div>
-                <input
-                    type={showPassword ? "text" : "password"}
-                    placeholder="Confirm your password"
-                    value={confirmPassword}
-                    onChange={(e) => setConfirmPassword(e.target.value)}
-                    className="col-span-1 p-2 rounded-2xl bg-[#AD773D] backdrop-blur-md placeholder-slate-950 text-black"
-                    style={{ borderRadius: '20px' }} 
-                />
-                <div className="absolute right-5 top-1/2 transform -translate-y-1/2">
-                    {showPassword ? (
-                    <FaEyeSlash onClick={togglePasswordVisibility} />
-                    ) : (
-                    <FaEye onClick={togglePasswordVisibility} />
-                    )}
-                </div>
-                </div>
-                {error && (
-                <div className="flex justify-center mt-2 text-red-600">
-                    {error}
-                </div>
-                )}
-                <div className="flex justify-center mt-5">
-                <button className="bg-[#011145] hover:bg-[#01071b] text-[#AD773D] py-2 px-4 rounded-full w-96 h-14 ">
-                    Register
-                </button>
-                </div>
-                <div className="flex justify-center mt-5">
-                <p
-                    className="text-[#171832] font-serif text-center mt-1 mb-8"
-                    style={{ fontSize: "14px" }}
-                >
-                    Already have an account?{" "}
-                    <a
-                    href="/login"
-                    className="text-[#AD773D] font-serif text-center mt-1 mb-8 hover:teks-[#AD773D]"
-                    style={{ fontSize: "14px" }}
-                    >
-                    Login
-                    </a>
-                </p>
-                </div>
-            </form>
+    <div className="container mx-auto px-10">
+      <div className="w-full inline-flex justify-center h-svh items-center">
+        <div className="bg-white w-96 h-80 inline-flex justify-center border border-black rounded-lg">
+          <div className="block w-full">
+            <div className="bg-[#EDECEC] text-2xl inline-flex items-center justify-center h-12 w-full text-center rounded-tr-lg rounded-tl-lg">
+              Forget Password
             </div>
+            <div className="h-[1px] bg-black w-full"></div>
+            <div className="bg-green-200 h-10 w-[23rem] inline-flex justify-center items-center border mt-2 border-green-700 rounded-lg" style={{ marginLeft: '7px' }}>
+              <p className="text-black text-xs inline-flex items-center justify-center">Untuk mereset email anda silahkan isi email Anda</p>
+            </div>
+            <form className="max-w-sm mx-auto px-2" onSubmit={handleSubmit}>
+              <label
+                htmlFor="email-address-icon"
+                className="block mt-7 mb-2 text-sm text-gray-900"
+              >
+                Your Email :
+              </label>
+              <div className="relative">
+                <div className="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+                  <svg
+                    className="w-4 h-4 text-gray-500 dark:text-gray-400"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor"
+                    viewBox="0 0 20 16"
+                  >
+                    <path d="m10.036 8.278 9.258-7.79A1.979 1.979 0 0 0 18 0H2A1.987 1.987 0 0 0 .641.541l9.395 7.737Z" />
+                    <path d="M11.241 9.817c-.36.275-.801.425-1.255.427-.428 0-.845-.138-1.187-.395L0 2.6V14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2.5l-8.759 7.317Z" />
+                  </svg>
+                </div>
+                <input
+                  type="text"
+                  id="email-address-icon"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="name@flowbite.com"
+                  value={email}
+                  onChange={handleEmailChange}
+                />
+              </div>
+              <button
+                type="submit"
+                className="text-white inline-flex items-center justify-center bg-blue-700 hover:bg-blue-800 focus:ring-4 mt-2 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 w-[23rem] me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+              >
+                <span className="inline-block">Kirim</span>
+              </button>
+              {message && <p>{message}</p>}
+            </form>
+          </div>
         </div>
-      </HomePageLayout>
-    </>
+      </div>
+    </div>
   );
-}
+};
+
+export default ForgotPasswordPage;

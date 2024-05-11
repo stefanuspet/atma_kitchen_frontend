@@ -28,6 +28,34 @@ export const register = async (formData) => {
   }
 };
 
+export const forgotPassword = async (formData) => {
+  try {
+    const res = await useClient.post("/customers/requestforget", formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+        "Content-Type": "application/json",
+      },
+    });
+    return res.data;
+  } catch (error) {
+    return error.response.data;
+  }
+}
+
+export const resetPassword = async (token, formData) => {
+  try {
+    const res = await useClient.post(`/customers/verify/${token}`, formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+        "Content-Type": "application/json",
+      },
+    });
+    return res.data;
+  } catch (error) {
+    return error.response.data;
+  }
+}
+
 export const logout = async () => {
   try {
     const res = await useClient.get("/logout", {
