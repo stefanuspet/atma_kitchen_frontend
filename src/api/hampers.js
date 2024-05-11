@@ -52,6 +52,7 @@ export const HampersDelete = async (id) => {
   try {
     const res = await useClient.delete(`/hampers/${id}`, {
       headers: {
+        "content-type": "application/json",
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     });
@@ -82,6 +83,39 @@ export const HampersDetail = async (id) => {
       },
     });
     return res.data.data;
+  } catch (error) {
+    return error.response.data;
+  }
+};
+
+export const HampersProduk = async (id, formData) => {
+  try {
+    const res = await useClient.post(`/hampers/addproduk/${id}`, formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
+    return {
+      success: true,
+      data: res.status,
+    };
+  } catch (error) {
+    return error.response.data;
+  }
+};
+export const HampersProdukDelete = async (id, idProduk) => {
+  try {
+    const res = await useClient.delete(`/hampers/${id}/${idProduk}`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
+    return {
+      success: true,
+      data: res.status,
+    };
   } catch (error) {
     return error.response.data;
   }

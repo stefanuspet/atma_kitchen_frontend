@@ -22,7 +22,7 @@ const ProdukPenitip = () => {
     setSearch(searchValue);
     setIsfound(true);
     if (searchValue === "") {
-      setPenitipSearch([]);
+      setProdukPenitipSearch([]);
       setIsfound(false);
       setSearch(false);
       return;
@@ -31,13 +31,13 @@ const ProdukPenitip = () => {
     ProdukPenitipSearch(searchValue)
       .then((res) => {
         if (res.length > 0) {
-          setPenitipSearch(res);
+          setProdukPenitipSearch(res);
           console.log(res, "search");
           setIsfound(true);
           setSearch(true);
         } else {
           setIsfound(false);
-          setPenitipSearch([]);
+          setProdukPenitipSearch([]);
           setSearch(true);
         }
       })
@@ -47,7 +47,6 @@ const ProdukPenitip = () => {
     return;
   };
 
-  console.log("isi dari penitip search", penitipSearch);
   const handleClearSearch = () => {
     setSearch("");
     setProdukPenitipSearch([]);
@@ -57,7 +56,7 @@ const ProdukPenitip = () => {
   const handleDelete = (id) => {
     ProdukPenitipDelete(id).then(() => {
       fetchData();
-      setPenitipSearch([]);
+      setProdukPenitipSearch([]);
       toast.success("penitip Berhasil Dihapus", {
         position: "top-right",
         autoClose: 5000,
@@ -127,7 +126,7 @@ const ProdukPenitip = () => {
                 <div className="w-full h-52 overflow-hidden">
                   <img
                     className="rounded-t-lg"
-                    src={getProdukPenitipImage(item.gambar_produk)}
+                    src={getProdukPenitipImage(item.gambar_produk_penitip)}
                     alt="test"
                     width={500}
                     height={500}
@@ -141,27 +140,27 @@ const ProdukPenitip = () => {
                 <div className="p-5">
                   <a href="#">
                     <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                      {item.nama_produk}
+                      {item.nama_produk_penitip}
                     </h5>
                   </a>
                   <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                    harga : {item.harga_produk}
+                    harga : {item.harga_produk_penitip}
                   </p>
                   <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                    stok : {item.stok_produk}
+                    stok : {item.stok_produk_penitip}
                   </p>
                   <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                    nama penitip : {item.penitip}
+                    nama penitip : {item.nama_penitip}
                   </p>
                   <div className="flex justify-end gap-x-2">
                     <NavLink
-                      to={`/dashboard-admin/produk-penitip/edit/${item.id_produk_penitip}`}
+                      to={`/dashboard-admin/produk-penitip/edit/${item.id}`}
                       className="p-2 rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                     >
                       <FaPencilAlt className="text-white" />
                     </NavLink>
                     <div
-                      onClick={() => handleDelete(item.id_produk_penitip)}
+                      onClick={() => handleDelete(item.id)}
                       className=" p-2 rounded-lg bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800"
                     >
                       <FaTrash className="text-white" />

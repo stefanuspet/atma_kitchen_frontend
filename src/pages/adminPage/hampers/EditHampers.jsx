@@ -10,8 +10,8 @@ const EditHampers = () => {
   const [formData, setFormData] = useState({
     nama_hampers: "",
     harga_hampers: "",
-    stok_hampers: "",
     deskripsi_hampers: "",
+    stok_hampers: "",
     tanggal_pembuatan_hampers: "",
   });
   const id = param.id;
@@ -21,8 +21,8 @@ const EditHampers = () => {
       setFormData({
         nama_hampers: res.nama_hampers,
         harga_hampers: res.harga_hampers,
-        stok_hampers: res.stok_hampers,
         deskripsi_hampers: res.deskripsi_hampers,
+        stok_hampers: res.stok_hampers,
         tanggal_pembuatan_hampers: res.tanggal_pembuatan_hampers,
       });
     });
@@ -91,7 +91,7 @@ const EditHampers = () => {
             htmlFor="harga_hampers"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
           >
-            Harga Produk
+            Harga Hampers
           </label>
           <input
             type="number"
@@ -109,7 +109,7 @@ const EditHampers = () => {
             htmlFor="stok_hampers"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
           >
-            Stok Produk
+            Stok hampers
           </label>
           <input
             type="number"
@@ -122,6 +122,7 @@ const EditHampers = () => {
             onChange={handleChange}
           />
         </div>
+
         <div className="mb-5">
           <label
             htmlFor="deskripsi_hampers"

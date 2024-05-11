@@ -7,7 +7,7 @@ import {
   GetPenitip,
 } from "../../../api/produkPenitip";
 
-const EditProduk_penitipPenitip = () => {
+const EditProdukPenitip = () => {
   const param = useParams();
   const navigate = useNavigate();
 
@@ -53,36 +53,37 @@ const EditProduk_penitipPenitip = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    if (formData.stok_produk_penitip <= 0) {
+      toast.error("Stok tidak boleh kurang dari 1", {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+      return;
+    }
+    // harga_produk_penitip <= 0
+    if (formData.harga_produk_penitip < 0) {
+      toast.error("Harga tidak boleh kurang dari 0", {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+      return;
+    }
+
     ProdukPenitipUpdate(id, formData).then((res) => {
       console.log(formData, "form data submit");
 
-      if (formData.stok_produk_penitip <= 0) {
-        toast.error("Stok tidak boleh kurang dari 1", {
-          position: "top-right",
-          autoClose: 2000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "colored",
-        });
-        return;
-      }
-      // harga_produk_penitip <= 0
-      if (formData.harga_produk_penitip < 0) {
-        toast.error("Harga tidak boleh kurang dari 0", {
-          position: "top-right",
-          autoClose: 2000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "colored",
-        });
-        return;
-      }
       if (res.success) {
         toast.success("Produk Penitip berhasil diupdate", {
           position: "top-right",
@@ -119,7 +120,7 @@ const EditProduk_penitipPenitip = () => {
   }, []);
   return (
     <div className="w-full relative">
-      <h1 className="text-2xl font-bold">Edit Produk_penitip</h1>
+      <h1 className="text-2xl font-bold">Edit Produk Penitip</h1>
       <form
         onSubmit={(e) => {
           handleSubmit(e);

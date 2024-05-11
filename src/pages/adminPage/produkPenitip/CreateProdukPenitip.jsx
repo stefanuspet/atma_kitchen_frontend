@@ -50,35 +50,34 @@ const CreateProdukPenitip = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    if (formData.stok_produk_penitip <= 0) {
+      toast.error("Stok tidak boleh kurang dari 1", {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+      return;
+    }
+    // harga_produk_penitip <= 0
+    if (formData.harga_produk_penitip <= 0) {
+      toast.error("Harga tidak boleh kurang dari 1", {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+      return;
+    }
     ProdukPenitipCreate(formData).then((res) => {
-      if (formData.stok_produk_penitip <= 0) {
-        toast.error("Stok tidak boleh kurang dari 1", {
-          position: "top-right",
-          autoClose: 2000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "colored",
-        });
-        return;
-      }
-      // harga_produk_penitip <= 0
-      if (formData.harga_produk_penitip <= 0) {
-        toast.error("Harga tidak boleh kurang dari 1", {
-          position: "top-right",
-          autoClose: 2000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "colored",
-        });
-        return;
-      }
-
       if (res.success) {
         toast.success("Produk Penitip berhasil ditambahkan", {
           position: "top-right",
