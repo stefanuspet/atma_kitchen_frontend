@@ -51,7 +51,7 @@ const Hampers = () => {
     HampersDelete(id).then(() => {
       fetchData();
       setHampersSearch([]);
-      toast.success("penitip Berhasil Dihapus", {
+      toast.success("Hampers Berhasil Dihapus", {
         position: "top-right",
         autoClose: 2000,
         hideProgressBar: false,

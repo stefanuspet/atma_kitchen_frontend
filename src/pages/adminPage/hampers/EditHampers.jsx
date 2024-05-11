@@ -52,8 +52,9 @@ const EditHampers = () => {
       console.log(formData, "form data edit");
 
       console.log(res, "this is res");
-
-      navigate("/dashboard-admin/hampers");
+      setTimeout(() => {
+        navigate("/dashboard-admin/hampers");
+      }, 2000);
     });
   };
 

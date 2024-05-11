@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { HampersCreate } from "../../../api/hampers";
@@ -33,35 +33,36 @@ const CreateHampers = () => {
 
     formData.tanggal_pembuatan_hampers = today;
 
+    if (formData.stok_hampers < 0) {
+      toast.error("Stok tidak boleh kurang dari 0", {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+      return;
+    }
+
+    if (formData.harga_hampers < 0) {
+      toast.error("Harga tidak boleh kurang dari 0", {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+      return;
+    }
+
     HampersCreate(formData).then((res) => {
-      if (formData.stok_hampers < 0) {
-        toast.error("Stok tidak boleh kurang dari 0", {
-          position: "top-right",
-          autoClose: 2000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "colored",
-        });
-        return;
-      }
-
-      if (formData.harga_hampers < 0) {
-        toast.error("Harga tidak boleh kurang dari 0", {
-          position: "top-right",
-          autoClose: 2000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "colored",
-        });
-        return;
-      }
-
+      console.log(res.success, "res create hampers");
       if (res.success) {
         toast.success("Hampers berhasil ditambahkan", {
           position: "top-right",
@@ -73,13 +74,38 @@ const CreateHampers = () => {
           progress: undefined,
           theme: "colored",
         });
+        setTimeout(() => {
+          navigate("/dashboard-admin/hampers");
+        }, 2000);
       }
-
-      navigate("/dashboard-admin/hampers");
     });
 
     console.log(formData, "form data submit");
   };
+
+  // useEffect show toast
+  // useEffect(() => {
+  //   toast.error("Stok tidak boleh kurang dari 0", {
+  //     position: "top-right",
+  //     autoClose: 2000,
+  //     hideProgressBar: false,
+  //     closeOnClick: true,
+  //     pauseOnHover: true,
+  //     draggable: true,
+  //     progress: undefined,
+  //     theme: "colored",
+  //   });
+  //   toast.error("Harga tidak boleh kurang dari 0", {
+  //     position: "top-right",
+  //     autoClose: 2000,
+  //     hideProgressBar: false,
+  //     closeOnClick: true,
+  //     pauseOnHover: true,
+  //     draggable: true,
+  //     progress: undefined,
+  //     theme: "colored",
+  //   });
+  // }, []);
 
   return (
     <>
