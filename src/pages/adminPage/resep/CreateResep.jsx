@@ -34,7 +34,6 @@ const CreateResep = () => {
       setBahanBaku(res);
     });
   }, []);
-  console.log("nama bb", bahan_baku);
 
   const handleClearForm = () => {
     setFormData({

@@ -7,7 +7,7 @@ import {
   GetPenitip,
 } from "../../../api/produkPenitip";
 
-const EditProduk_penitipPenitip = () => {
+const EditProdukPenitip = () => {
   const param = useParams();
   const navigate = useNavigate();
 

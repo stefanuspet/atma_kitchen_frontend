@@ -119,6 +119,18 @@ const router = createBrowserRouter([
         path: "/dashboard-admin/hampers/createproduk/:id",
         element: <AddProdukHampers />,
       },
+      {
+        path: "/dashboard-admin/resep",
+        element: <Resep />,
+      },
+      {
+        path: "/dashboard-admin/resep/create",
+        element: <CreateResep />,
+      },
+      {
+        path: "/dashboard-admin/resep/edit/:id",
+        element: <EditResep />,
+      },
     ],
   },
   {
@@ -173,6 +185,10 @@ const router = createBrowserRouter([
       },
       {
         path: "/dashboard-owner/gaji",
+        element: <Gaji />,
+      },
+      {
+        path: "/dashboard-owner/gaji/edit/:id",
         element: <Gaji />,
       },
     ],
