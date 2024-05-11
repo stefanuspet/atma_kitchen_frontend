@@ -4,7 +4,6 @@ import { IoMdArrowRoundBack } from "react-icons/io";
 import {
   HampersDetail,
   HampersProduk,
-  HampersDelete,
   HampersProdukDelete,
 } from "../../../api/hampers";
 import { GetProduk } from "../../../api/produk";
