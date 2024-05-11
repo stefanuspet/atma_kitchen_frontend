@@ -24,7 +24,7 @@ const EditResep = () => {
   const id = param.id;
 
   useEffect(() => {
-    GetResepById(id).then((res) => {
+    getResepById(id).then((res) => {
       setFormData({
         takaran: res.takaran,
         id_produk: res.id_produk,

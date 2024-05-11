@@ -4,7 +4,7 @@ import { useState } from "react";
 import { GajiUpdate, getGajiById } from "../../../api/gaji";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+ 
 const EditGaji = () => {
     const navigate = useNavigate();
     const param = useParams();
@@ -62,7 +62,7 @@ const EditGaji = () => {
                 });
             });
     }, [id]);
-
+ 
     // const handleChange = (e) => {
     //     setFormData((prevData) => ({
     //         ...prevData,
@@ -76,7 +76,7 @@ const EditGaji = () => {
             [name]: value.trim() ? parseFloat(value) : "", // konversi ke bilangan
         }));
     };
-
+ 
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(formData);
@@ -110,7 +110,7 @@ const EditGaji = () => {
         }
     });
 };
-
+ 
 // handleclear form
 const handleClearForm = () => {
     setFormData({
@@ -120,7 +120,7 @@ const handleClearForm = () => {
         tanggal_gaji: "",
     });
 };
-
+ 
 return (
     <div className="w-full relative">
         <h1 className="text-2xl font-bold">Edit Gaji</h1>
@@ -209,7 +209,7 @@ return (
                 Submit
             </button>
         </form>
-
+ 
         <ToastContainer />
     </div>
 );

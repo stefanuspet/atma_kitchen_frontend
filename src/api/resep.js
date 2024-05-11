@@ -45,7 +45,6 @@ export const GetBahanBaku = async () => {
 //   }
 // };
 
-
 export const GetProduk = async () => {
   try {
     const res = await useClient.get("/produk_search", {
@@ -54,7 +53,7 @@ export const GetProduk = async () => {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     });
-    return res.data.data;
+    return res.data.data.data;
   } catch (error) {
     return error.response.data;
   }
@@ -79,10 +78,14 @@ export const ResepCreate = async (formData) => {
     const res = await useClient.post("/resep", formData, {
       headers: {
         "Content-Type": "multipart/form-data",
+        "constent-type": "application/json", // "constent-type": "application/json
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     });
-    return res.data; // Mengembalikan data yang diterima dari backend
+    return {
+      success: true,
+      data: res.status,
+    }; // Mengembalikan data yang diterima dari backend
   } catch (error) {
     return error.response.data;
   }

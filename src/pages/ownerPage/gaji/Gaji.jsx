@@ -9,13 +9,13 @@ import {
   GajiDelete,
   GajiSearch,
 } from "../../../api/gaji";
-
+ 
 const Gaji = () => {
   const [gaji, setGaji] = useState([]);
   const [gajiSearch, setGajiSearch] = useState([]);
   const [search, setSearch] = useState("");
   const [isfound, setIsfound] = useState(true);
-
+ 
   const handleInputSearch = (e) => {
     const searchValue = e.target.value.trim();
     setSearch(searchValue);
@@ -26,7 +26,7 @@ const Gaji = () => {
       setSearch(false);
       return;
     }
-
+ 
     GajiSearch(searchValue)
       .then((res) => {
         if (res.length > 0) {
@@ -45,13 +45,13 @@ const Gaji = () => {
       });
     return;
   };
-
+ 
   const handleClearSearch = () => {
     setSearch("");
     setGajiSearch([]);
     document.getElementById("search").value = "";
   };
-
+ 
   const handleDelete = (id) => {
   GajiDelete(id).then(() => {
       fetchData();
@@ -68,17 +68,17 @@ const Gaji = () => {
       });
     });
   };
-
+ 
   const fetchData = async () => {
     const response = await GajiGet();
     setGaji(response);
     console.log(response);
   };
-
+ 
   useEffect(() => {
     fetchData();
   }, []);
-
+ 
   return (
     <>
       <div className="relative w-full">
@@ -197,5 +197,5 @@ const Gaji = () => {
     </>
   );
 };
-
+ 
 export default Gaji;
