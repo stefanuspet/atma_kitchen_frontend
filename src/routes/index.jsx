@@ -33,6 +33,7 @@ import AddProdukHampers from "../pages/adminPage/hampers/AddProdukHampers";
 import Resep from "../pages/adminPage/resep/Resep";
 import CreateResep from "../pages/adminPage/resep/CreateResep";
 import EditResep from "../pages/adminPage/resep/EditResep";
+import HomeUser from "../pages/HomeUser";
 
 const router = createBrowserRouter([
   {
@@ -131,6 +132,22 @@ const router = createBrowserRouter([
         path: "/dashboard-admin/resep/edit/:id",
         element: <EditResep />,
       },
+      {
+        path: "/dashboard-admin/hampers",
+        element: <Hampers />,
+      },
+      {
+        path: "/dashboard-admin/resep",
+        element: <Resep />,
+      },
+      {
+        path: "/dashboard-admin/resep/create",
+        element: <CreateResep />,
+      },
+      {
+        path: "/dashboard-admin/resep/edit/:id",
+        element: <EditResep />,
+      },
     ],
   },
   {
@@ -187,11 +204,15 @@ const router = createBrowserRouter([
         path: "/dashboard-owner/gaji",
         element: <Gaji />,
       },
-      {
-        path: "/dashboard-owner/gaji/edit/:id",
-        element: <Gaji />,
-      },
     ],
+  },
+  {
+    path: "/home",
+    element: (
+      <ProtectedRoutes>
+        <HomeUser />
+      </ProtectedRoutes>
+    ),
   },
 ]);
 

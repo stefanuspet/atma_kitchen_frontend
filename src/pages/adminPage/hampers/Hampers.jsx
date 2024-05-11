@@ -51,7 +51,7 @@ const Hampers = () => {
     HampersDelete(id).then(() => {
       fetchData();
       setHampersSearch([]);
-      toast.success("penitip Berhasil Dihapus", {
+      toast.success("Hampers Berhasil Dihapus", {
         position: "top-right",
         autoClose: 2000,
         hideProgressBar: false,
@@ -61,6 +61,7 @@ const Hampers = () => {
         progress: undefined,
         theme: "colored",
       });
+      handleClearSearch();
     });
   };
 
@@ -131,15 +132,21 @@ const Hampers = () => {
                   harga : {item.harga_hampers}
                 </p>
                 <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                  deskripsi : {item.deskripsi_hampers}
+                </p>
+                <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
                   stok : {item.stok_hampers}
                 </p>
                 <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                  deskripsi : {item.stok_hampers}
-                </p>
-                <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                  tanggal pembuatan Hampers : {item.tanggal_pembuatan_hampers}
+                  tanggal : {item.tanggal_pembuatan_hampers}
                 </p>
                 <div className="flex justify-end gap-x-2">
+                  <NavLink
+                    to={`/dashboard-admin/hampers/createproduk/${item.id}`}
+                    className="inline-flex items-center gap-3 p-2 rounded-lg bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+                  >
+                    Add Produk <FaPlus />
+                  </NavLink>
                   <NavLink
                     to={`/dashboard-admin/hampers/edit/${item.id}`}
                     className="p-2 rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
@@ -176,29 +183,29 @@ const Hampers = () => {
                 harga : {item.harga_hampers}
               </p>
               <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                stok : {item.stok_hampers}
+                deskripsi : {item.deskripsi_hampers}
               </p>
               <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                deskripsi : {item.deskripsi_hampers}
+                stok : {item.stok_hampers}
               </p>
               <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
                 tanggal : {item.tanggal_pembuatan_hampers}
               </p>
               <div className="flex justify-end gap-x-2 w-full">
                 <NavLink
-                  to={"/dashboard-admin/hampers/createproduk/:id"}
+                  to={`/dashboard-admin/hampers/createproduk/${item.id}`}
                   className="inline-flex items-center gap-3 p-2 rounded-lg bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
                 >
                   Add Produk <FaPlus />
                 </NavLink>
                 <NavLink
-                  to={`/dashboard-admin/hampers/edit/${item.id_hampers}`}
+                  to={`/dashboard-admin/hampers/edit/${item.id}`}
                   className="p-2 rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                 >
                   <FaPencilAlt className="text-white" />
                 </NavLink>
                 <div
-                  onClick={() => handleDelete(item.id_hampers)}
+                  onClick={() => handleDelete(item.id)}
                   className=" p-2 rounded-lg bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800"
                 >
                   <FaTrash className="text-white" />
