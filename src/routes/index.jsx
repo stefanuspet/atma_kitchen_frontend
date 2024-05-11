@@ -27,6 +27,7 @@ import EditBahanBaku from "../pages/adminPage/bahanbaku/EditBahanBaku";
 import EditProdukPenitip from "../pages/adminPage/produkPenitip/EditProdukPenitip";
 import Hampers from "../pages/adminPage/hampers/Hampers";
 import ForgotPasswordPage from "../pages/ForgotPasswordPage";
+import CreatePasswordPage from "../pages/CreatePasswordPage";
 
 const router = createBrowserRouter([
   {
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
   {
     path: "/forgotpassword",
     element: <ForgotPasswordPage />,
+  },
+  {
+    path: "/customers/verify/:token",
+    element: <CreatePasswordPage />,
   },
   {
     path: "/dashboard-admin",
