@@ -1,5 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import HomePage from "../pages/HomePage";
+import HomeUser from "../pages/HomeUser";
 import { ToastContainer } from "react-toastify";
 import DashboardAdmin from "../pages/adminPage/DashboardAdmin";
 import ProtectedRoutes from "./ProtectedRoute";
@@ -34,9 +35,9 @@ import AddProdukHampers from "../pages/adminPage/hampers/AddProdukHampers";
 import Resep from "../pages/adminPage/resep/Resep";
 import CreateResep from "../pages/adminPage/resep/CreateResep";
 import EditResep from "../pages/adminPage/resep/EditResep";
-import HomeUser from "../pages/HomeUser";
 import EditGaji from "../pages/ownerPage/gaji/EditGaji";
 import CreateGaji from "../pages/ownerPage/gaji/CreateGaji";
+import EditProfilePage from "../pages/EditProfilePage";
 
 const router = createBrowserRouter([
   {
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <HomePage />,
+  },
+  {
+    path: "/homeUser",
+    element: <HomeUser />,
   },
   {
     path: "/login",
@@ -222,10 +227,18 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: "/home",
+    path: "/homeUser",
     element: (
       <ProtectedRoutes>
         <HomeUser />
+      </ProtectedRoutes>
+    ),
+  },
+  {
+    path: "/customers/profile/edit/:id",
+    element: (
+      <ProtectedRoutes>
+        <EditProfilePage />
       </ProtectedRoutes>
     ),
   },

@@ -34,7 +34,7 @@ const LoginPage = () => {
         } else if (res.abilities === "OWNER") {
           navigate("/dashboard-owner");
         } else if (res.abilities === "Customer") {
-          navigate("/home");
+          navigate("/homeUser");
         }
         console.log(res.token, "Login sukses");
         console.log(res.abilities, "abilities");
@@ -62,7 +62,7 @@ const LoginPage = () => {
       } else if (abilities === "OWNER") {
         navigate("/dashboard-owner");
       } else if (abilities === "Customer") {
-        navigate("/home");
+        navigate("/homeUser");
       }
     }
   }, []);

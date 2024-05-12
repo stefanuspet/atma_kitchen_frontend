@@ -3,7 +3,6 @@ import { ToastContainer, toast } from "react-toastify";
 import { StoreBahanBaku } from "../../../api/bahanbaku";
 import { useNavigate } from "react-router-dom";
 
-
 const CreateBahanBaku = () => {
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
@@ -59,7 +58,6 @@ const CreateBahanBaku = () => {
         });
         console.log(formData);
     };
-
 
     const handleClearForm = () => {
         setFormData({
