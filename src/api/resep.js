@@ -110,7 +110,7 @@ export const ResepCreate = async (formData) => {
 
 export const ResepUpdate = async (id, formData) => {
   try {
-    const res = await useClient.post(`/resep/${id}`, formData, {
+    const res = await useClient.put(`/resep/${id}`, formData, {
       headers: {
         "Content-Type": "multipart/form-data",
         Authorization: `Bearer ${localStorage.getItem("token")}`,

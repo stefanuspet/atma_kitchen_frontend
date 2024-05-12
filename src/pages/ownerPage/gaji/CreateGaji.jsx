@@ -12,6 +12,7 @@ const CreateGaji = () => {
     tanggal_gaji: "",
     id_karyawan: "",
   });
+  console.log(formData, "hadeh");
 
   const [karyawan, setKaryawan] = useState([]);
 
@@ -56,7 +57,7 @@ const CreateGaji = () => {
           theme: "colored",
         });
         setTimeout(() => {
-          navigate("/dashboard-admin/gaji");
+          navigate("/dashboard-owner/gaji");
         }, 2000);
         handleClearForm();
       } else {

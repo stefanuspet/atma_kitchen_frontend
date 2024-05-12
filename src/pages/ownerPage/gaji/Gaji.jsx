@@ -4,18 +4,14 @@ import { FaPlus } from "react-icons/fa";
 import { FaTrash } from "react-icons/fa";
 import { FaPencilAlt } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
-import {
-  GajiGet,
-  GajiDelete,
-  GajiSearch,
-} from "../../../api/gaji";
- 
+import { GajiGet, GajiDelete, GajiSearch } from "../../../api/gaji";
+
 const Gaji = () => {
   const [gaji, setGaji] = useState([]);
   const [gajiSearch, setGajiSearch] = useState([]);
   const [search, setSearch] = useState("");
   const [isfound, setIsfound] = useState(true);
- 
+
   const handleInputSearch = (e) => {
     const searchValue = e.target.value.trim();
     setSearch(searchValue);
@@ -26,7 +22,7 @@ const Gaji = () => {
       setSearch(false);
       return;
     }
- 
+
     GajiSearch(searchValue)
       .then((res) => {
         if (res.length > 0) {
@@ -45,15 +41,15 @@ const Gaji = () => {
       });
     return;
   };
- 
+
   const handleClearSearch = () => {
     setSearch("");
     setGajiSearch([]);
     document.getElementById("search").value = "";
   };
- 
+
   const handleDelete = (id) => {
-  GajiDelete(id).then(() => {
+    GajiDelete(id).then(() => {
       fetchData();
       setGajiSearch([]);
       toast.success("Gaji Berhasil Dihapus", {
@@ -68,17 +64,17 @@ const Gaji = () => {
       });
     });
   };
- 
+
   const fetchData = async () => {
     const response = await GajiGet();
     setGaji(response);
     console.log(response);
   };
- 
+
   useEffect(() => {
     fetchData();
   }, []);
- 
+
   return (
     <>
       <div className="relative w-full">
@@ -101,12 +97,12 @@ const Gaji = () => {
             </button>
           </div>
         </div>
-        {/* <NavLink
-          to="/dashboard-admin/produk-penitip/create"
+        <NavLink
+          to="/dashboard-owner/gaji/create"
           className="bg-green-500 p-2 rounded-lg mt-2 mb-4 flex items-center w-fit"
         >
-          Tambah Produk Penitip <FaPlus className="ml-2" />
-        </NavLink> */}
+          Tambah Gaji <FaPlus className="ml-2" />
+        </NavLink>
         <div style={{ display: search ? "block" : "none" }}>
           <h1 className="text-xl font-bold pt-10 pb-2">Hasil Pencarian</h1>
           <div className="h-0.5 bg-white"></div>
@@ -137,7 +133,7 @@ const Gaji = () => {
                   </p>
                   <div className="flex justify-end gap-x-2">
                     <NavLink
-                      to={`/dashboard-admin/gaji/edit/${item.id_gaji}`}
+                      to={`/dashboard-owner/gaji/edit/${item.id_gaji}`}
                       className="p-2 rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                     >
                       <FaPencilAlt className="text-white" />
@@ -163,21 +159,21 @@ const Gaji = () => {
               className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 w-72"
             >
               <div className="p-5">
-                  <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                    honor harian : {item.honor_harian}
-                  </p>
-                  <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                    bonus : {item.bonus}
-                  </p>
-                  <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                    total_gaji : {item.total_gaji}
-                  </p>
-                  <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                    tanggal_gaji : {item.tanggal_gaji}
-                  </p>
+                <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                  honor harian : {item.honor_harian}
+                </p>
+                <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                  bonus : {item.bonus}
+                </p>
+                <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                  total_gaji : {item.total_gaji}
+                </p>
+                <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                  tanggal_gaji : {item.tanggal_gaji}
+                </p>
                 <div className="flex justify-end gap-x-2">
                   <NavLink
-                    to={`/dashboard-admin/gaji/edit/${item.id_gaji}`}
+                    to={`/dashboard-owner/gaji/edit/${item.id_gaji}`}
                     className="p-2 rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                   >
                     <FaPencilAlt className="text-white" />
@@ -197,5 +193,5 @@ const Gaji = () => {
     </>
   );
 };
- 
+
 export default Gaji;

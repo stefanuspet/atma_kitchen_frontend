@@ -35,8 +35,8 @@ import Resep from "../pages/adminPage/resep/Resep";
 import CreateResep from "../pages/adminPage/resep/CreateResep";
 import EditResep from "../pages/adminPage/resep/EditResep";
 import HomeUser from "../pages/HomeUser";
-import CreateGaji from "../pages/ownerPage/gaji/CreateGaji";
 import EditGaji from "../pages/ownerPage/gaji/EditGaji";
+import CreateGaji from "../pages/ownerPage/gaji/CreateGaji";
 
 const router = createBrowserRouter([
   {
@@ -195,32 +195,32 @@ const router = createBrowserRouter([
       },
     ],
   },
-  // {
-  //   path: "/dashboard-owner",
-  //   element: (
-  //     <ProtectedRoutes>
-  //       <DashboardOwnerLayout />
-  //     </ProtectedRoutes>
-  //   ),
-  //   children: [
-  //     {
-  //       path: "/dashboard-owner",
-  //       element: <div>Dashboard Owner</div>,
-  //     },
-  //     {
-  //       path: "/dashboard-owner/gaji",
-  //       element: <Gaji />,
-  //     },
-  //     // {
-  //     //   path: "/dashboard-manager/gaji/create",
-  //     //   element: <CreateGaji />,
-  //     // },
-  //     {
-  //       path: "/dashboard-manager/gaji/edit/:id",
-  //       element: <EditGaji />,
-  //     },
-  //   ],
-  // },
+  {
+    path: "/dashboard-owner",
+    element: (
+      <ProtectedRoutes>
+        <DashboardOwnerLayout />
+      </ProtectedRoutes>
+    ),
+    children: [
+      {
+        path: "/dashboard-owner",
+        element: <div>Dashboard Owner</div>,
+      },
+      {
+        path: "/dashboard-owner/gaji",
+        element: <Gaji />,
+      },
+      {
+        path: "/dashboard-owner/gaji/create",
+        element: <CreateGaji />,
+      },
+      {
+        path: "/dashboard-owner/gaji/edit/:id",
+        element: <EditGaji />,
+      },
+    ],
+  },
   {
     path: "/home",
     element: (
