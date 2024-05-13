@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
-import { ProfileUpdate, getProfileById } from "../api/auth";
+import { ProfileUpdate, getProfile } from "../api/auth";
 import { ToastContainer, toast } from "react-toastify";
 import HomeUserLayout from "../Layout/HomeUserLayout";
 import "react-toastify/dist/ReactToastify.css";
@@ -15,13 +15,12 @@ const EditProfilePage = ({ }) => {
     });
     const id = param.id;
     useEffect(() => {
-        getProfileById(id).then((res) => {
+        getProfile(id).then((res) => {
             setFormData({
                 nama_customer: res.nama_customer,
                 email_customer: res.email_customer,
                 notelp_customer: res.notelp_customer,
             });
-            console.log(res, "info res");
         });
     }, []);
 
@@ -32,7 +31,7 @@ const EditProfilePage = ({ }) => {
         }));
     };
 
-    const handleSave = () => {
+    const handleSave = (e) => {
         e.preventDefault();
         console.log(formData);
         ProfileUpdate(id, formData).then((res) => {
@@ -61,7 +60,6 @@ const EditProfilePage = ({ }) => {
             }
         });
     };
-
     return (
         <HomeUserLayout>
             <div className="flex justify-center items-center h-screen w-full">
@@ -71,9 +69,14 @@ const EditProfilePage = ({ }) => {
                         <div className="flex justify-center">
                             <form onSubmit={handleSave}>
                                 <div className="flex justify-center -mt-16">
+                                    <label
+                                        htmlFor="nama_customer"
+                                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                                    >
+                                    </label>
                                     <input
-                                        type="nama_customer"
-                                        id="text"
+                                        type="text"
+                                        id="nama_customer"
                                         name="nama_customer"
                                         placeholder="Enter your name"
                                         required
@@ -83,6 +86,11 @@ const EditProfilePage = ({ }) => {
                                     />
                                 </div>
                                 <div className="flex justify-center mt-5 items-center relative">
+                                    <label
+                                        htmlFor="email_customer"
+                                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                                    >
+                                    </label>
                                     <input
                                         id="email_customer"
                                         name="email_customer"
@@ -95,6 +103,11 @@ const EditProfilePage = ({ }) => {
                                     />
                                 </div>
                                 <div className="flex justify-center mt-5 items-center relative">
+                                    <label
+                                        htmlFor="notelp_customer"
+                                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                                    >
+                                    </label>
                                     <input
                                         id="notelp_customer"
                                         name="notelp_customer"

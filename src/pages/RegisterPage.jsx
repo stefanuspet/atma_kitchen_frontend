@@ -6,7 +6,7 @@ import { register } from "../api/auth";
 export default function Page() {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
-  const [successMessage, setSuccessMessage] = useState(""); // Tambahkan state untuk pesan keberhasilan
+  const [successMessage, setSuccessMessage] = useState("");
   const [data, setData] = useState({});
 
   const togglePasswordVisibility = () => {

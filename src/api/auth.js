@@ -44,7 +44,7 @@ export const getProfile = async () => {
 
 export const ProfileUpdate = async (id, formData) => {
   try {
-      const res = await useClient.put(`/customers/profile/${id}`, formData, {
+      const res = await useClient.post(`/customers/profile/${id}`, formData, {
           headers: {
               "Content-Type": "multipart/form-data",
               "content-type": "application/json",
@@ -68,7 +68,7 @@ export const getProfileById = async (id) => {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
       });
-      return res.data.data;
+      return res.data.customer;
   } catch (error) {
       return error.response.data;
   }
