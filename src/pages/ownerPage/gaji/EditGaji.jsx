@@ -11,8 +11,6 @@ const EditGaji = () => {
     const [formData, setFormData] = useState({
         honor_harian: "",
         bonus: "",
-        total_gaji: "",
-        tanggal_gaji: "",
     });
     const id = param.id;
     // useEffect(() => {
@@ -28,12 +26,10 @@ const EditGaji = () => {
     useEffect(() => {
         getGajiById(id)
             .then((res) => {
-                if (res) { // mengecek apakah respon tidak kosong
+                if (res) {
                     setFormData({
                         honor_harian: res.honor_harian,
                         bonus: res.bonus,
-                        total_gaji: res.total_gaji,
-                        tanggal_gaji: res.tanggal_gaji,
                     });
                 } else {
                     toast.error("Data gaji tidak ditemukan", {
@@ -93,7 +89,7 @@ const EditGaji = () => {
                 theme: "colored",
             });
             setTimeout(() => {
-                navigate("/dashboard-admin/gaji");
+                navigate("/dashboard-owner/gaji");
             }, 2000);
             handleClearForm();
         } else {
@@ -163,42 +159,6 @@ return (
                     placeholder="Bonus"
                     required
                     value={formData.bonus}
-                    onChange={handleChange}
-                />
-            </div>
-            <div className="mb-5">
-                <label
-                    htmlFor="total_gaji"
-                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >
-                    Total Gaji
-                </label>
-                <input
-                    type="number"
-                    id="total_gaji"
-                    name="total_gaji"
-                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="Total Gaji"
-                    required
-                    value={formData.total_gaji}
-                    onChange={handleChange}
-                />
-            </div>
-            <div className="mb-5">
-                <label
-                    htmlFor="tanggal_gaji"
-                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >
-                    Tanggal Gaji
-                </label>
-                <input
-                    type="date"
-                    id="tanggal_gaji"
-                    name="tanggal_gaji"
-                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="Tanggal Gaji"
-                    required
-                    value={formData.tanggal_gaji}
                     onChange={handleChange}
                 />
             </div>

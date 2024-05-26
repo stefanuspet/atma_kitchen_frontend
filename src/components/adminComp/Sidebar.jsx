@@ -74,7 +74,15 @@ const Sidebar = () => {
             <NavLink to="/dashboard-admin/hampers">
               <div className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                 <GiShoppingBag />
-                <span className="flex-1 ms-3 whitespace-nowrap">hampers</span>
+                <span className="flex-1 ms-3 whitespace-nowrap">Hampers</span>
+              </div>
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/dashboard-admin/jarak-pengiriman">
+              <div className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                <GiShoppingBag />
+                <span className="flex-1 ms-3 whitespace-nowrap">Jarak Pengiriman</span>
               </div>
             </NavLink>
           </li>

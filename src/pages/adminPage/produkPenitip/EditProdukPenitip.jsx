@@ -97,7 +97,7 @@ const EditProdukPenitip = () => {
         });
         navigate("/dashboard-admin/produk-penitip");
       } else {
-        toast.error("Gagal update produk_penitip penitip", {
+        toast.error("Gagal update Produk Penitip", {
           position: "top-right",
           autoClose: 2000,
           hideProgressBar: false,

@@ -4,11 +4,11 @@ import { FaPlus } from "react-icons/fa";
 import { FaTrash } from "react-icons/fa";
 import { FaPencilAlt } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
-import { ResepGet, ResepDelete, ResepSearch } from "../../../api/resep";
+import { GetJarakPengiriman, JarakPengirimanDelete, searchJarakPengiriman } from "../../../api/jarakPengiriman";
 
-const Resep = () => {
-  const [resep, setResep] = useState([]);
-  const [resepSearch, setResepSearch] = useState([]);
+const JarakPengiriman = () => {
+  const [jarakPengiriman, setJarakPengiriman] = useState([]);
+  const [jarakPengirimanSearch, setJarakPengirimanSearch] = useState([]);
   const [search, setSearch] = useState("");
   const [isfound, setIsfound] = useState(true);
 
@@ -17,22 +17,22 @@ const Resep = () => {
     setSearch(searchValue);
     setIsfound(true);
     if (searchValue === "") {
-      ResepSearch([]);
+      searchJarakPengiriman([]);
       setIsfound(false);
       setSearch(false);
       return;
     }
 
-    ResepSearch(searchValue)
+    searchJarakPengiriman(searchValue)
       .then((res) => {
         if (res.length > 0) {
-          setResepSearch(res);
+          setJarakPengirimanSearch(res);
           console.log(res, "search");
           setIsfound(true);
           setSearch(true);
         } else {
           setIsfound(false);
-          setResepSearch([]);
+          setJarakPengirimanSearch([]);
           setSearch(true);
         }
       })
@@ -44,15 +44,15 @@ const Resep = () => {
 
   const handleClearSearch = () => {
     setSearch("");
-    setResepSearch([]);
+    setJarakPengirimanSearch([]);
     document.getElementById("search").value = "";
   };
 
   const handleDelete = (id) => {
-    ResepDelete(id).then(() => {
+    JarakPengirimanDelete(id).then(() => {
       fetchData();
-      setPenitipSearch([]);
-      toast.success("Resep Berhasil Dihapus", {
+      setJarakPengirimanSearch([]);
+      toast.success("Jarak Pengiriman Berhasil Dihapus", {
         position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,
@@ -65,24 +65,27 @@ const Resep = () => {
     });
   };
 
-  const fetchData = async () => {
-    const response = await ResepGet();
-    console.log(response);
-    setResep(response);
-    console.log(response);
+  const fetchData = () => {
+    GetJarakPengiriman()
+      .then((res) => {
+        setJarakPengiriman(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   useEffect(() => {
     fetchData();
   }, []);
 
-  console.log("resep", resep);
+  
   return (
     <>
       <div className="relative w-full">
         <ToastContainer />
         <div className="flex justify-between">
-          <h1 className="text-3xl mt-0 x  font-bold">Resep</h1>
+          <h1 className="text-3xl mt-0 x  font-bold">Jarak Pengiriman</h1>
           <div>
             <input
               onChange={handleInputSearch}
@@ -100,10 +103,10 @@ const Resep = () => {
           </div>
         </div>
         <NavLink
-          to="/dashboard-admin/resep/create"
+          to="/dashboard-admin/jarak-pengiriman/create"
           className="bg-green-500 p-2 rounded-lg mt-2 mb-4 flex items-center w-fit"
         >
-          Tambah Resep <FaPlus className="ml-2" />
+          Tambah Jarak Pengirman <FaPlus className="ml-2" />
         </NavLink>
         <div style={{ display: search ? "block" : "none" }}>
           <h1 className="text-xl font-bold pt-10 pb-2">Hasil Pencarian</h1>
@@ -112,35 +115,33 @@ const Resep = () => {
             style={{ display: isfound ? "none" : "block" }}
             className="py-5 text-red-600"
           >
-            Resep Tidak Ditemukan !
+            Jarak Pengiriman Tidak Ditemukan !
           </h1>
           <div className="grid grid-cols-3 gap-7 pt-5">
-            {resepSearch.map((item, index) => (
+            {jarakPengirimanSearch.map((item, index) => (
               <div
                 key={index}
                 className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 w-72"
               >
                 <div className="p-5">
-                  <a href="#">
-                    <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                      {item.nama_produk}
-                    </h5>
-                  </a>
                   <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                    takaran : {item.takaran}
+                    jarak : {item.jarak}
                   </p>
                   <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                    nama bahan baku : {item.nama_bahan_baku}
+                    harga : {item.harga}
+                  </p>
+                  <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                    waktu : {item.waktu}
                   </p>
                   <div className="flex justify-end gap-x-2">
                     <NavLink
-                      to={`/dashboard-admin/resep/edit/${item.id_resep}`}
+                      to={`/dashboard-admin/jarak-pengiriman/edit/${item.id_jarak_pengiriman}`}
                       className="p-2 rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                     >
                       <FaPencilAlt className="text-white" />
                     </NavLink>
                     <div
-                      onClick={() => handleDelete(item.id_resep)}
+                      onClick={() => handleDelete(item.id_jarak_pengiriman)}
                       className=" p-2 rounded-lg bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800"
                     >
                       <FaTrash className="text-white" />
@@ -151,35 +152,33 @@ const Resep = () => {
             ))}
           </div>
         </div>
-        <h1 className="text-xl font-bold pt-10 pb-2">Semua Resep</h1>
+        <h1 className="text-xl font-bold pt-10 pb-2">Semua Jarak Pengiriman</h1>
         <div className="h-0.5 bg-white"></div>
         <div className="grid grid-cols-3 gap-7 pt-5">
-          {resep.map((item, index) => (
+          {jarakPengiriman.map((item, index) => (
             <div
               key={index}
               className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 w-72"
             >
               <div className="p-5">
-                <a href="#">
-                  <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                    {item.id_produk}
-                  </h5>
-                </a>
                 <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                  takaran : {item.takaran}
+                  jarak : {item.jarak}
                 </p>
                 <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                  nama bahan baku : {item.id_bahan_baku}
+                  harga : {item.harga}
+                </p>
+                <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                  waktu : {item.waktu}
                 </p>
                 <div className="flex justify-end gap-x-2">
                   <NavLink
-                    to={`/dashboard-admin/resep/edit/${item.id}`}
+                    to={`/dashboard-admin/jarak-pengiriman/edit/${item.id_jarak_pengiriman}`}
                     className="p-2 rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                   >
                     <FaPencilAlt className="text-white" />
                   </NavLink>
                   <div
-                    onClick={() => handleDelete(item.id)}
+                    onClick={() => handleDelete(item.id_jarak_pengiriman)}
                     className=" p-2 rounded-lg bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800"
                   >
                     <FaTrash className="text-white" />
@@ -194,4 +193,4 @@ const Resep = () => {
   );
 };
 
-export default Resep;
+export default JarakPengiriman;
