@@ -1,5 +1,19 @@
 import useClient from ".";
 
+export const GetKaryawan = async () => {
+  try {
+    const res = await useClient.get("/pesanan_search", {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
+    return res.data.data;
+  } catch (error) {
+    return error.response.data;
+  }
+};
+
 export const GetJarakPengiriman = async () => {
   try {
     const res = await useClient.get("/jarak_pengiriman", {

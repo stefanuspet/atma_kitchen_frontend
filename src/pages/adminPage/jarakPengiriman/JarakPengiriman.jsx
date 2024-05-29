@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
-import { FaPlus } from "react-icons/fa";
-import { FaTrash } from "react-icons/fa";
-import { FaPencilAlt } from "react-icons/fa";
+import { FaPlus, FaTrash, FaPencilAlt } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import { GetJarakPengiriman, JarakPengirimanDelete, searchJarakPengiriman } from "../../../api/jarakPengiriman";
 
@@ -79,7 +77,7 @@ const JarakPengiriman = () => {
     fetchData();
   }, []);
 
-  
+
   return (
     <>
       <div className="relative w-full">
@@ -125,6 +123,9 @@ const JarakPengiriman = () => {
               >
                 <div className="p-5">
                   <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                    nama produk : {item.nama_produk}
+                  </p>
+                  <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
                     jarak : {item.jarak}
                   </p>
                   <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
@@ -161,6 +162,12 @@ const JarakPengiriman = () => {
               className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 w-72"
             >
               <div className="p-5">
+                <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                  id transakti: {item.id_jarak_pengiriman}
+                </p>
+                <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                  nama produk: {item.nama_produk}
+                </p>
                 <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
                   jarak : {item.jarak}
                 </p>

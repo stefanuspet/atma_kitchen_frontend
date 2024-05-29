@@ -13,16 +13,7 @@ const EditGaji = () => {
         bonus: "",
     });
     const id = param.id;
-    // useEffect(() => {
-    //     getGajiById(id).then((res) => {
-    //         setFormData({
-    //             honor_harian: res.honor_harian,
-    //             bonus: res.bonus,
-    //             total_gaji: res.total_gaji,
-    //             tanggal_gaji: res.tanggal_gaji,
-    //         });
-    //     });
-    // }, []);
+
     useEffect(() => {
         getGajiById(id)
             .then((res) => {
@@ -59,12 +50,6 @@ const EditGaji = () => {
             });
     }, [id]);
  
-    // const handleChange = (e) => {
-    //     setFormData((prevData) => ({
-    //         ...prevData,
-    //         [e.target.name]: e.target.value,
-    //     }));
-    // };
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData((prevData) => ({
@@ -107,7 +92,6 @@ const EditGaji = () => {
     });
 };
  
-// handleclear form
 const handleClearForm = () => {
     setFormData({
         honor_harian: "",

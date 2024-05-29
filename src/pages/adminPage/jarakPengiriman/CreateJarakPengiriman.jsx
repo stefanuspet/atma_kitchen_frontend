@@ -9,6 +9,7 @@ const CreateJarakPengiriman = ({ refreshDistances }) => {
     jarak: '',
     harga: 0,
     waktu: '',
+    id_pesanan: "",
   });
   const navigate = useNavigate();
 
