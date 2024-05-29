@@ -1,5 +1,4 @@
 import useClient from ".";
-// const token = localStorage.getItem("token");
 
 export const GetBahanbaku = async () => {
     try {

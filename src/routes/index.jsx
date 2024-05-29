@@ -35,12 +35,24 @@ import AddProdukHampers from "../pages/adminPage/hampers/AddProdukHampers";
 import Resep from "../pages/adminPage/resep/Resep";
 import CreateResep from "../pages/adminPage/resep/CreateResep";
 import EditResep from "../pages/adminPage/resep/EditResep";
-import EditGaji from "../pages/ownerPage/gaji/EditGaji";
 import JarakPengiriman from "../pages/adminPage/jarakPengiriman/JarakPengiriman";
 import CreateJarakPengiriman from "../pages/adminPage/jarakPengiriman/CreateJarakPengiriman.jsx";
 import EditJarakPengiriman from "../pages/adminPage/jarakPengiriman/EditJarakPengiriman";
 import EditProfilePage from "../pages/EditProfilePage";
 import HistoryPage from "../pages/HistoryPage";
+import Resep from "../pages/adminPage/resep/Resep";
+import EditResep from "../pages/adminPage/resep/EditResep";
+import HomeUser from "../pages/HomeUser";
+import EditGaji from "../pages/ownerPage/gaji/EditGaji";
+import CreateGaji from "../pages/ownerPage/gaji/CreateGaji";
+import PembelianBahanBaku from "../pages/managerPage/pembelianBahanBaku/PembelianBahanBaku";
+import CreatePembelianBahanBaku from "../pages/managerPage/pembelianBahanBaku/CreatePembelianBahanBaku";
+import EditPembelianBahanBaku from "../pages/managerPage/pembelianBahanBaku/EditPembelianBahanBaku";
+import OurMenuPage from "../pages/OurMenuPage";
+import DashboardCustomerLayout from "../Layout/DashboardCustomerLayout";
+import TampilProdukPage from "../pages/customerPage/TampilProdukPage";
+import CartPage from "../pages/customerPage/CartPage";
+import Checkout from "../pages/customerPage/Checkout";
 
 const router = createBrowserRouter([
   {
@@ -70,6 +82,10 @@ const router = createBrowserRouter([
   {
     path: "/customers/verify/:token",
     element: <CreatePasswordPage />,
+  },
+  {
+    path: "ourmenu",
+    element: <OurMenuPage />,
   },
   {
     path: "/dashboard-admin",
@@ -213,6 +229,18 @@ const router = createBrowserRouter([
         path: "/dashboard-manager/penitip/edit/:id",
         element: <EditPenitip />,
       },
+      {
+        path: "/dashboard-manager/pembelian-bahan-baku",
+        element: <PembelianBahanBaku />,
+      },
+      {
+        path: "/dashboard-manager/pembelian-bahan-baku/create",
+        element: <CreatePembelianBahanBaku />,
+      },
+      {
+        path: "/dashboard-manager/pembelian-bahan-baku/edit/:id",
+        element: <EditPembelianBahanBaku />,
+      },
     ],
   },
   {
@@ -232,13 +260,42 @@ const router = createBrowserRouter([
         element: <Gaji />,
       },
       {
+        path: "/dashboard-owner/gaji/create",
+        element: <CreateGaji />,
+      },
+      {
         path: "/dashboard-owner/gaji/edit/:id",
         element: <EditGaji />,
       },
     ],
   },
+  // Customer
   {
-    path: "/homeUser",
+    path: "/detail-produk/:id",
+    element: (
+      <ProtectedRoutes>
+        <TampilProdukPage />
+      </ProtectedRoutes>
+    ),
+  },
+  {
+    path: "/cart",
+    element: (
+      <ProtectedRoutes>
+        <CartPage />
+      </ProtectedRoutes>
+    ),
+  },
+  {
+    path: "/checkout",
+    element: (
+      <ProtectedRoutes>
+        <Checkout />
+      </ProtectedRoutes>
+    ),
+  },
+  {
+    path: "/home",
     element: (
       <ProtectedRoutes>
         <HomeUser />
