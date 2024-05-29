@@ -40,20 +40,16 @@ import CreateJarakPengiriman from "../pages/adminPage/jarakPengiriman/CreateJara
 import EditJarakPengiriman from "../pages/adminPage/jarakPengiriman/EditJarakPengiriman";
 import EditProfilePage from "../pages/EditProfilePage";
 import HistoryPage from "../pages/HistoryPage";
-import Resep from "../pages/adminPage/resep/Resep";
-import EditResep from "../pages/adminPage/resep/EditResep";
-import HomeUser from "../pages/HomeUser";
-import EditGaji from "../pages/ownerPage/gaji/EditGaji";
-import CreateGaji from "../pages/ownerPage/gaji/CreateGaji";
-import PembelianBahanBaku from "../pages/managerPage/pembelianBahanBaku/PembelianBahanBaku";
-import CreatePembelianBahanBaku from "../pages/managerPage/pembelianBahanBaku/CreatePembelianBahanBaku";
-import EditPembelianBahanBaku from "../pages/managerPage/pembelianBahanBaku/EditPembelianBahanBaku";
 import OurMenuPage from "../pages/OurMenuPage";
-import DashboardCustomerLayout from "../Layout/DashboardCustomerLayout";
 import TampilProdukPage from "../pages/customerPage/TampilProdukPage";
 import CartPage from "../pages/customerPage/CartPage";
 import Checkout from "../pages/customerPage/Checkout";
 import Contact from "../pages/Contact.jsx";
+import PembelianBahanBaku from "../pages/managerPage/pembelianBahanBaku/PembelianBahanBaku.jsx";
+import CreatePembelianBahanBaku from "../pages/managerPage/pembelianBahanBaku/CreatePembelianBahanBaku.jsx";
+import EditPembelianBahanBaku from "../pages/managerPage/pembelianBahanBaku/EditPembelianBahanBaku.jsx";
+import PengeluaranLain from "../pages/managerPage/pengeluaranlain/PengeluaranLain.jsx";
+import EditGaji from "../pages/ownerPage/gaji/EditGaji.jsx";
 
 const router = createBrowserRouter([
   {
@@ -268,10 +264,10 @@ const router = createBrowserRouter([
         path: "/dashboard-owner/gaji",
         element: <Gaji />,
       },
-      {
-        path: "/dashboard-owner/gaji/create",
-        element: <CreateGaji />,
-      },
+      // {
+      //   path: "/dashboard-owner/gaji/create",
+      //   element: <CreateGaji />,
+      // },
       {
         path: "/dashboard-owner/gaji/edit/:id",
         element: <EditGaji />,

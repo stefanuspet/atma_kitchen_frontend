@@ -6,6 +6,7 @@ const Checkout = () => {
   const [jenisPengiriman, setJenisPengiriman] = useState([
     { id: 1, nama: "Pickup" },
     { id: 2, nama: "Delivery" },
+    { id: 3, nama: "Ojol" },
   ]);
 
   const [metodePembayaran, setMetodePembayaran] = useState([
