@@ -36,7 +36,6 @@ import Resep from "../pages/adminPage/resep/Resep";
 import CreateResep from "../pages/adminPage/resep/CreateResep";
 import EditResep from "../pages/adminPage/resep/EditResep";
 import JarakPengiriman from "../pages/adminPage/jarakPengiriman/JarakPengiriman";
-import CreateJarakPengiriman from "../pages/adminPage/jarakPengiriman/CreateJarakPengiriman.jsx";
 import EditJarakPengiriman from "../pages/adminPage/jarakPengiriman/EditJarakPengiriman";
 import EditProfilePage from "../pages/EditProfilePage";
 import HistoryPage from "../pages/HistoryPage";
@@ -183,10 +182,6 @@ const router = createBrowserRouter([
       {
         path: "/dashboard-admin/jarak-pengiriman",
         element: <JarakPengiriman />,
-      },
-      {
-        path: "/dashboard-admin/jarak-pengiriman/create",
-        element: <CreateJarakPengiriman />,
       },
       {
         path: "/dashboard-admin/jarak-pengiriman/edit/:id",
