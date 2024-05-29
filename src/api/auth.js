@@ -116,3 +116,17 @@ export const logout = async () => {
     return error.response.data;
   }
 };
+
+export const contact = async (formData) => {
+  try {
+    const res = await useClient.post("/contact", formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+        accept: "application/json",
+      },
+    });
+    return res.data;
+  } catch (error) {
+    return error.response.data;
+  }
+};

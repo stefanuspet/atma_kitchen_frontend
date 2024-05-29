@@ -53,6 +53,7 @@ import DashboardCustomerLayout from "../Layout/DashboardCustomerLayout";
 import TampilProdukPage from "../pages/customerPage/TampilProdukPage";
 import CartPage from "../pages/customerPage/CartPage";
 import Checkout from "../pages/customerPage/Checkout";
+import Contact from "../pages/Contact.jsx";
 
 const router = createBrowserRouter([
   {
@@ -82,6 +83,10 @@ const router = createBrowserRouter([
   {
     path: "/customers/verify/:token",
     element: <CreatePasswordPage />,
+  },
+  {
+    path: "/contact",
+    element: <Contact />,
   },
   {
     path: "ourmenu",
@@ -240,6 +245,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard-manager/pembelian-bahan-baku/edit/:id",
         element: <EditPembelianBahanBaku />,
+      },
+      {
+        path: "/dashboard-manager/pengeluaranlain",
+        element: <PengeluaranLain />,
       },
     ],
   },
