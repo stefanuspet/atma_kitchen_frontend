@@ -34,8 +34,9 @@ const LoginPage = () => {
         } else if (res.abilities === "OWNER") {
           navigate("/dashboard-owner");
         } else if (res.abilities === "Customer") {
-          navigate("/home");
+          navigate("/");
         }
+        toast.success("Login success");
         console.log(res.token, "Login sukses");
         console.log(res.abilities, "abilities");
       })
@@ -61,6 +62,8 @@ const LoginPage = () => {
         navigate("/dashboard-manager");
       } else if (abilities === "OWNER") {
         navigate("/dashboard-owner");
+      } else if (abilities === "Customer") {
+        navigate("/");
       }
     }
   }, []);

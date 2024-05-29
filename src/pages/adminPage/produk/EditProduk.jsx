@@ -8,8 +8,10 @@ const EditProduk = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     nama_produk: "",
-    harga_produk: "",
+    harga_satu_loyang: "",
+    harga_setengah_loyang: "",
     stok_produk: "",
+    max_produksi: "",
     image: null,
   });
   const id = param.id;
@@ -17,7 +19,9 @@ const EditProduk = () => {
     getProdukById(id).then((res) => {
       setFormData({
         nama_produk: res.nama_produk,
-        harga_produk: res.harga_produk,
+        harga_satu_loyang: res.harga_satu_loyang,
+        harga_setengah_loyang: res.harga_setengah_loyang,
+        max_produksi: res.max_produksi,
         stok_produk: res.stok_produk,
       });
     });
@@ -41,7 +45,12 @@ const EditProduk = () => {
     e.preventDefault();
     const formDatatoSend = new FormData();
     formDatatoSend.append("nama_produk", formData.nama_produk);
-    formDatatoSend.append("harga_produk", formData.harga_produk);
+    formDatatoSend.append("harga_satu_loyang", formData.harga_satu_loyang);
+    formDatatoSend.append(
+      "harga_setengah_loyang",
+      formData.harga_setengah_loyang
+    );
+    formDatatoSend.append("max_produksi", formData.max_produksi);
     formDatatoSend.append("stok_produk", formData.stok_produk);
     if (formData.image) {
       formDatatoSend.append("image", formData.image);
@@ -63,7 +72,7 @@ const EditProduk = () => {
       }
 
       // harga tidak boleh kurang dari 0
-      if (formData.harga_produk < 0) {
+      if (formData.harga_satu_loyang < 0) {
         toast.error("Harga tidak boleh kurang dari 0", {
           position: "top-right",
           autoClose: 2000,
@@ -111,7 +120,7 @@ const EditProduk = () => {
   const handleClearForm = () => {
     setFormData({
       nama_produk: "",
-      harga_produk: "",
+      harga_satu_loyang: "",
       stok_produk: "",
     });
 
@@ -146,19 +155,37 @@ const EditProduk = () => {
         </div>
         <div className="mb-5">
           <label
-            htmlFor="harga_produk"
+            htmlFor="harga_satu_loyang"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
           >
-            Harga Produk
+            Harga Satu Loyang
           </label>
           <input
             type="number"
-            id="harga_produk"
-            name="harga_produk"
+            id="harga_satu_loyang"
+            name="harga_satu_loyang"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="Harga Produk"
+            placeholder="Harga Satu Loyang"
             required
-            value={formData.harga_produk}
+            value={formData.harga_satu_loyang}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="mb-5">
+          <label
+            htmlFor="harga_setengah_loyang"
+            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >
+            Harga setengah Loyang
+          </label>
+          <input
+            type="number"
+            id="harga_setengah_loyang"
+            name="harga_setengah_loyang"
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="Setengah Loyang"
+            required
+            value={formData.harga_setengah_loyang}
             onChange={handleChange}
           />
         </div>
@@ -177,6 +204,24 @@ const EditProduk = () => {
             placeholder="Stok Produk"
             required
             value={formData.stok_produk}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="mb-5">
+          <label
+            htmlFor="max_produksi"
+            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >
+            Max Produksi
+          </label>
+          <input
+            type="number"
+            id="max_produksi"
+            name="max_produksi"
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="Stok Produk"
+            required
+            value={formData.max_produksi}
             onChange={handleChange}
           />
         </div>
