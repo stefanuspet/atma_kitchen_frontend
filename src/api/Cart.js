@@ -85,3 +85,18 @@ export const getCartById = async (id) => {
     return error;
   }
 };
+
+//  delete cart by id prodyk
+export const deleteCartById = async (id) => {
+  try {
+    const res = await useClient.delete(`/cart_produk/${id}`, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
+    return { status: res.status, data: res.data };
+  } catch (error) {
+    return error;
+  }
+};

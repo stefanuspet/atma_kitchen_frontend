@@ -49,6 +49,7 @@ import CreatePembelianBahanBaku from "../pages/managerPage/pembelianBahanBaku/Cr
 import EditPembelianBahanBaku from "../pages/managerPage/pembelianBahanBaku/EditPembelianBahanBaku.jsx";
 import PengeluaranLain from "../pages/managerPage/pengeluaranlain/PengeluaranLain.jsx";
 import EditGaji from "../pages/ownerPage/gaji/EditGaji.jsx";
+import Transaksi from "../pages/Transaksi.jsx";
 
 const router = createBrowserRouter([
   {
@@ -283,6 +284,14 @@ const router = createBrowserRouter([
     element: (
       <ProtectedRoutes>
         <CartPage />
+      </ProtectedRoutes>
+    ),
+  },
+  {
+    path: "/transaksi",
+    element: (
+      <ProtectedRoutes>
+        <Transaksi />
       </ProtectedRoutes>
     ),
   },

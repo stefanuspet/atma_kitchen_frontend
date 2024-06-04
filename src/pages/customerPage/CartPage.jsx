@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from "react";
 import HomePageLayout from "../../Layout/HomePageLayout";
-import { getCart, deleteCart, updateCart } from "../../api/Cart";
+import { getCart, deleteCart, updateCart, getCartById } from "../../api/Cart";
 import { getProdukImage } from "../../api";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const CartPage = () => {
+  const navigate = useNavigate();
   const [data, setData] = useState([]);
   const [checkedItems, setCheckedItems] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
+  const [datatoCheckout, setDatatoCheckout] = useState();
 
   const handleCheckboxChange = (itemId, itemPrice) => {
     setCheckedItems((prevCheckedItems) => {
@@ -30,6 +33,9 @@ const CartPage = () => {
   console.log(checkedItems, "checkedItems");
 
   const incrementCount = (id, jmlh) => {
+    if (checkedItems.includes(id)) {
+      return toast.error("Cannot increment while item is checked");
+    }
     const newJumlah = jmlh + 1;
 
     const formData = {
@@ -45,6 +51,9 @@ const CartPage = () => {
   };
 
   const decrementCount = (id, jmlh) => {
+    if (checkedItems.includes(id)) {
+      return toast.error("Cannot decrement while item is checked");
+    }
     const newJumlah = jmlh - 1;
 
     if (newJumlah < 1) {
@@ -80,7 +89,36 @@ const CartPage = () => {
       });
     });
   };
-  console.log(data, "data");
+
+  const handleCheckout = async () => {
+    // if no item checked
+    if (checkedItems.length === 0) {
+      return toast.error("Pilih produk terlebih dahulu");
+    }
+    console.log("checkout");
+    //get all item that checked
+    const checkedItem = data.filter((item) => checkedItems.includes(item.id));
+    console.log(checkedItem);
+    try {
+      // Use Promise.all to wait for all async operations to complete
+      const results = await Promise.all(
+        checkedItem.map((item) => getCartById(item.id))
+      );
+
+      // masukin ke local storage
+      localStorage.setItem("checkout", JSON.stringify(results));
+      localStorage.setItem("totalPrice", JSON.stringify(totalPrice));
+
+      // toast sukses checkout
+      toast.success("Checkout berhasil");
+      // navigate ke halaman checkout
+      navigate("/checkout");
+    } catch (error) {
+      console.error("Error fetching cart data:", error);
+    }
+    console.log(totalPrice);
+  };
+
   return (
     <HomePageLayout>
       <div className="container relative mx-auto w-full min-h-lvh mt-44">
@@ -176,7 +214,10 @@ const CartPage = () => {
             <div className="flex justify-end items-center p-4 gap-10 w-full">
               <p className="text-2xl font-bold">Total Harga</p>
               <p className="text-2xl font-bold">Rp {totalPrice}</p>
-              <button className="text-white bg-[#18a40b] hover:bg-[#27c219] font-medium rounded-lg text-sm py-2 px-4">
+              <button
+                onClick={handleCheckout}
+                className="text-white bg-[#18a40b] hover:bg-[#27c219] font-medium rounded-lg text-sm py-2 px-4"
+              >
                 Checkout
               </button>
             </div>

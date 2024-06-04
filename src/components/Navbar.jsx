@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Logo from "../assets/images/logo.png";
 import { NavLink } from "react-router-dom";
-import { logout } from "../api/auth";
+import { getProfile, logout } from "../api/auth";
 import { useNavigate } from "react-router-dom";
 import { FaUserCircle } from "react-icons/fa";
 import { FaSignOutAlt } from "react-icons/fa";
@@ -19,7 +19,7 @@ const Navbar = () => {
 
   const handleLogout = async () => {
     await logout().then((res) => {
-      console.log(res);
+      // console.log(res);
       localStorage.removeItem("token");
       localStorage.removeItem("abilities");
       navigate("/login");
@@ -39,7 +39,7 @@ const Navbar = () => {
     await getProfile()
       .then((res) => {
         setCustomerData(res);
-        console.log(res);
+        // console.log(res);
       })
       .catch((err) => {
         console.log(err);
