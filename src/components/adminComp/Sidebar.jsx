@@ -7,6 +7,7 @@ import { FaClipboardList } from "react-icons/fa";
 import { GiShoppingBag } from "react-icons/gi";
 import { FaSignOutAlt } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { GiChipsBag } from "react-icons/gi";
 import { logout } from "../../api/auth";
 
 const Sidebar = () => {
@@ -44,6 +45,16 @@ const Sidebar = () => {
             </NavLink>
           </li>
           <li>
+            <NavLink to="/dashboard-admin/produk-penitip">
+              <div className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                <GiChipsBag />
+                <span className="flex-1 ms-3 whitespace-nowrap">
+                  Produk Penitip
+                </span>
+              </div>
+            </NavLink>
+          </li>
+          <li>
             <NavLink to="/dashboard-admin/resep">
               <div className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                 <FaReceipt />
@@ -52,12 +63,10 @@ const Sidebar = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/dashboard-admin/bahan_baku">
+            <NavLink to="/dashboard-admin/bahanbaku">
               <div className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                 <FaClipboardList />
-                <span className="flex-1 ms-3 whitespace-nowrap">
-                  Bahan Baku
-                </span>
+                <span className="flex-1 ms-3 whitespace-nowrap">Bahan Baku</span>
               </div>
             </NavLink>
           </li>
@@ -65,7 +74,15 @@ const Sidebar = () => {
             <NavLink to="/dashboard-admin/hampers">
               <div className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                 <GiShoppingBag />
-                <span className="flex-1 ms-3 whitespace-nowrap">hampers</span>
+                <span className="flex-1 ms-3 whitespace-nowrap">Hampers</span>
+              </div>
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/dashboard-admin/jarak-pengiriman">
+              <div className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                <GiShoppingBag />
+                <span className="flex-1 ms-3 whitespace-nowrap">Jarak Pengiriman</span>
               </div>
             </NavLink>
           </li>

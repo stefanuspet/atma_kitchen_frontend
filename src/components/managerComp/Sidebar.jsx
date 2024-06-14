@@ -54,7 +54,7 @@ const Sidebar = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/dashboard-manager/data_penitip">
+            <NavLink to="/dashboard-manager/penitip">
               <div className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                 <FaPeopleCarryBox />
                 <span className="flex-1 ms-3 whitespace-nowrap">
@@ -64,11 +64,11 @@ const Sidebar = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/dashboard-manager/cat_bahan_baku">
+            <NavLink to="/dashboard-manager/pembelian-bahan-baku">
               <div className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                 <SiMaterialdesignicons />
                 <span className="flex-1 ms-3 whitespace-nowrap text-wrap">
-                  Pencatatan Pembelian Bahan Baku
+                  Pembelian Bahan Baku
                 </span>
               </div>
             </NavLink>
@@ -79,16 +79,6 @@ const Sidebar = () => {
                 <FaMoneyCheckAlt />
                 <span className="flex-1 ms-3 whitespace-nowrap text-wrap">
                   Pencatatan Pengeluaran Lain
-                </span>
-              </div>
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/dashboard-manager/data_presensi">
-              <div className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                <FaArrowsDownToPeople />
-                <span className="flex-1 ms-3 whitespace-nowrap text-wrap">
-                  Data Presensi
                 </span>
               </div>
             </NavLink>

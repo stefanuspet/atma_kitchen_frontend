@@ -1,12 +1,13 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import HomePage from "../pages/HomePage";
+import HomeUser from "../pages/HomeUser";
 import { ToastContainer } from "react-toastify";
 import DashboardAdmin from "../pages/adminPage/DashboardAdmin";
 import ProtectedRoutes from "./ProtectedRoute";
 import DashboardAdminLayout from "../Layout/DashboardAdminLayout";
-import Produk from "../pages/adminPage/produk/Produk";
 import LoginPage from "../pages/LoginPage";
 import RegisterPage from "../pages/RegisterPage";
+import Produk from "../pages/adminPage/produk/Produk";
 import CreateProduk from "../pages/adminPage/produk/CreateProduk";
 import EditProduk from "../pages/adminPage/produk/EditProduk";
 import DashboardManagerLayout from "../Layout/DashboardManagerLayout";
@@ -16,6 +17,39 @@ import CreateKaryawan from "../pages/managerPage/karyawan/CreateKaryawan";
 import EditKaryawan from "../pages/managerPage/karyawan/EditKaryawan";
 import DashboardOwnerLayout from "../Layout/DashboardOwnerLayout";
 import Gaji from "../pages/ownerPage/gaji/Gaji";
+import Penitip from "../pages/managerPage/penitip/Penitip";
+import CreatePenitip from "../pages/managerPage/penitip/CreatePenitip";
+import EditPenitip from "../pages/managerPage/penitip/EditPenitip";
+import ProdukPenitip from "../pages/adminPage/produkPenitip/ProdukPenitip";
+import CreateProdukPenitip from "../pages/adminPage/produkPenitip/CreateProdukPenitip";
+import BahanBaku from "../pages/adminPage/bahanbaku/BahanBaku";
+import CreateBahanBaku from "../pages/adminPage/bahanbaku/CreateBahanBaku";
+import EditBahanBaku from "../pages/adminPage/bahanbaku/EditBahanBaku";
+import EditProdukPenitip from "../pages/adminPage/produkPenitip/EditProdukPenitip";
+import Hampers from "../pages/adminPage/hampers/Hampers";
+import ForgotPasswordPage from "../pages/ForgotPasswordPage";
+import CreatePasswordPage from "../pages/CreatePasswordPage";
+import CreateHampers from "../pages/adminPage/hampers/CreateHampers";
+import EditHampers from "../pages/adminPage/hampers/EditHampers";
+import AddProdukHampers from "../pages/adminPage/hampers/AddProdukHampers";
+import Resep from "../pages/adminPage/resep/Resep";
+import CreateResep from "../pages/adminPage/resep/CreateResep";
+import EditResep from "../pages/adminPage/resep/EditResep";
+import JarakPengiriman from "../pages/adminPage/jarakPengiriman/JarakPengiriman";
+import EditJarakPengiriman from "../pages/adminPage/jarakPengiriman/EditJarakPengiriman";
+import EditProfilePage from "../pages/EditProfilePage";
+import HistoryPage from "../pages/HistoryPage";
+import OurMenuPage from "../pages/OurMenuPage";
+import TampilProdukPage from "../pages/customerPage/TampilProdukPage";
+import CartPage from "../pages/customerPage/CartPage";
+import Checkout from "../pages/customerPage/Checkout";
+import Contact from "../pages/Contact.jsx";
+import PembelianBahanBaku from "../pages/managerPage/pembelianBahanBaku/PembelianBahanBaku.jsx";
+import CreatePembelianBahanBaku from "../pages/managerPage/pembelianBahanBaku/CreatePembelianBahanBaku.jsx";
+import EditPembelianBahanBaku from "../pages/managerPage/pembelianBahanBaku/EditPembelianBahanBaku.jsx";
+import PengeluaranLain from "../pages/managerPage/pengeluaranlain/PengeluaranLain.jsx";
+import EditGaji from "../pages/ownerPage/gaji/EditGaji.jsx";
+import Transaksi from "../pages/Transaksi.jsx";
 
 const router = createBrowserRouter([
   {
@@ -27,12 +61,32 @@ const router = createBrowserRouter([
     element: <HomePage />,
   },
   {
+    path: "/homeUser",
+    element: <HomeUser />,
+  },
+  {
     path: "/login",
     element: <LoginPage />,
   },
   {
     path: "/register",
     element: <RegisterPage />,
+  },
+  {
+    path: "/forgotpassword",
+    element: <ForgotPasswordPage />,
+  },
+  {
+    path: "/customers/verify/:token",
+    element: <CreatePasswordPage />,
+  },
+  {
+    path: "/contact",
+    element: <Contact />,
+  },
+  {
+    path: "ourmenu",
+    element: <OurMenuPage />,
   },
   {
     path: "/dashboard-admin",
@@ -57,6 +111,82 @@ const router = createBrowserRouter([
       {
         path: "/dashboard-admin/produk/edit/:id",
         element: <EditProduk />,
+      },
+      {
+        path: "/dashboard-admin/produk-penitip",
+        element: <ProdukPenitip />,
+      },
+      {
+        path: "/dashboard-admin/produk-penitip/create",
+        element: <CreateProdukPenitip />,
+      },
+      {
+        path: "/dashboard-admin/produk-penitip/edit/:id",
+        element: <EditProdukPenitip />,
+      },
+      {
+        path: "/dashboard-admin/bahanbaku",
+        element: <BahanBaku />,
+      },
+      {
+        path: "/dashboard-admin/bahanbaku/create",
+        element: <CreateBahanBaku />,
+      },
+      {
+        path: "/dashboard-admin/bahanbaku/edit/:id",
+        element: <EditBahanBaku />,
+      },
+      {
+        path: "/dashboard-admin/hampers",
+        element: <Hampers />,
+      },
+      {
+        path: "/dashboard-admin/hampers/create",
+        element: <CreateHampers />,
+      },
+      {
+        path: "/dashboard-admin/hampers/edit/:id",
+        element: <EditHampers />,
+      },
+      {
+        path: "/dashboard-admin/hampers/createproduk/:id",
+        element: <AddProdukHampers />,
+      },
+      {
+        path: "/dashboard-admin/resep",
+        element: <Resep />,
+      },
+      {
+        path: "/dashboard-admin/resep/create",
+        element: <CreateResep />,
+      },
+      {
+        path: "/dashboard-admin/resep/edit/:id",
+        element: <EditResep />,
+      },
+      {
+        path: "/dashboard-admin/hampers",
+        element: <Hampers />,
+      },
+      {
+        path: "/dashboard-admin/resep",
+        element: <Resep />,
+      },
+      {
+        path: "/dashboard-admin/resep/create",
+        element: <CreateResep />,
+      },
+      {
+        path: "/dashboard-admin/resep/edit/:id",
+        element: <EditResep />,
+      },
+      {
+        path: "/dashboard-admin/jarak-pengiriman",
+        element: <JarakPengiriman />,
+      },
+      {
+        path: "/dashboard-admin/jarak-pengiriman/edit/:id",
+        element: <EditJarakPengiriman />,
       },
     ],
   },
@@ -84,6 +214,34 @@ const router = createBrowserRouter([
         path: "/dashboard-manager/karyawan/edit/:id",
         element: <EditKaryawan />,
       },
+      {
+        path: "/dashboard-manager/penitip",
+        element: <Penitip />,
+      },
+      {
+        path: "/dashboard-manager/penitip/create",
+        element: <CreatePenitip />,
+      },
+      {
+        path: "/dashboard-manager/penitip/edit/:id",
+        element: <EditPenitip />,
+      },
+      {
+        path: "/dashboard-manager/pembelian-bahan-baku",
+        element: <PembelianBahanBaku />,
+      },
+      {
+        path: "/dashboard-manager/pembelian-bahan-baku/create",
+        element: <CreatePembelianBahanBaku />,
+      },
+      {
+        path: "/dashboard-manager/pembelian-bahan-baku/edit/:id",
+        element: <EditPembelianBahanBaku />,
+      },
+      {
+        path: "/dashboard-manager/pengeluaranlain",
+        element: <PengeluaranLain />,
+      },
     ],
   },
   {
@@ -102,7 +260,72 @@ const router = createBrowserRouter([
         path: "/dashboard-owner/gaji",
         element: <Gaji />,
       },
+      // {
+      //   path: "/dashboard-owner/gaji/create",
+      //   element: <CreateGaji />,
+      // },
+      {
+        path: "/dashboard-owner/gaji/edit/:id",
+        element: <EditGaji />,
+      },
     ],
+  },
+  // Customer
+  {
+    path: "/detail-produk/:id",
+    element: (
+      <ProtectedRoutes>
+        <TampilProdukPage />
+      </ProtectedRoutes>
+    ),
+  },
+  {
+    path: "/cart",
+    element: (
+      <ProtectedRoutes>
+        <CartPage />
+      </ProtectedRoutes>
+    ),
+  },
+  {
+    path: "/transaksi",
+    element: (
+      <ProtectedRoutes>
+        <Transaksi />
+      </ProtectedRoutes>
+    ),
+  },
+  {
+    path: "/checkout",
+    element: (
+      <ProtectedRoutes>
+        <Checkout />
+      </ProtectedRoutes>
+    ),
+  },
+  {
+    path: "/home",
+    element: (
+      <ProtectedRoutes>
+        <HomeUser />
+      </ProtectedRoutes>
+    ),
+  },
+  {
+    path: "/customers/profile/edit/:id",
+    element: (
+      <ProtectedRoutes>
+        <EditProfilePage />
+      </ProtectedRoutes>
+    ),
+  },
+  {
+    path: "/customers/history",
+    element: (
+      <ProtectedRoutes>
+        <HistoryPage />
+      </ProtectedRoutes>
+    ),
   },
 ]);
 
