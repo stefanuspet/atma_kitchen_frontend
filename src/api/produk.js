@@ -89,3 +89,33 @@ export const searchProduk = async (search) => {
     return error.response.data;
   }
 };
+
+export const cetakLaporanPerProdukOW = async (data) => {
+  try {
+    const res = await useClient.post("/cetak_laporan_bulanan_produk_Ow", data, {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
+    return res.data.data;
+  } catch (error) {
+    return error.response.data;
+  }
+};
+
+export const cetakLaporanPerProdukMo = async (data) => {
+  try {
+    const res = await useClient.post("/cetak_laporan_bulanan_produk_mo", data, {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
+    return res.data.data;
+  } catch (error) {
+    return error.response.data;
+  }
+};

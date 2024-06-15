@@ -50,6 +50,9 @@ import EditPembelianBahanBaku from "../pages/managerPage/pembelianBahanBaku/Edit
 import PengeluaranLain from "../pages/managerPage/pengeluaranlain/PengeluaranLain.jsx";
 import EditGaji from "../pages/ownerPage/gaji/EditGaji.jsx";
 import Transaksi from "../pages/Transaksi.jsx";
+import LaporanPage from "../pages/managerPage/laporan/LaporanPage.jsx";
+import LaporanPageOwner from "../pages/ownerPage/laporan/LaporanPageOwner.jsx";
+import PemrosesanPesanan from "../pages/managerPage/pesanan/PemrosesanPesanan.jsx";
 
 const router = createBrowserRouter([
   {
@@ -199,6 +202,14 @@ const router = createBrowserRouter([
     ),
     children: [
       {
+        path: "/dashboard-manager/pemrosesanpesanan",
+        element: <PemrosesanPesanan />,
+      },
+      {
+        path: "/dashboard-manager/laporan",
+        element: <LaporanPage />,
+      },
+      {
         path: "/dashboard-manager",
         element: <DashboardManager />,
       },
@@ -264,6 +275,10 @@ const router = createBrowserRouter([
       //   path: "/dashboard-owner/gaji/create",
       //   element: <CreateGaji />,
       // },
+      {
+        path: "/dashboard-owner/laporan",
+        element: <LaporanPageOwner />,
+      },
       {
         path: "/dashboard-owner/gaji/edit/:id",
         element: <EditGaji />,
