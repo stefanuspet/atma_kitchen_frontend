@@ -14,9 +14,9 @@ export const GetTransaksi = async () => {
   }
 };
 
-export const GetJarakPengiriman = async () => {
+export const GetKonfirmasiPembayaran = async () => {
   try {
-    const res = await useClient.get("/jarak_pengiriman", {
+    const res = await useClient.get("/konfirmasi_pembayaran", {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -28,9 +28,9 @@ export const GetJarakPengiriman = async () => {
   }
 };
 
-export const JarakPengirimanUpdate = async (id, formData) => {
+export const KonfirmasiPembayaranUpdate = async (id, formData) => {
   try {
-    const res = await useClient.put(`/jarak_pengiriman/${id}`, formData, {
+    const res = await useClient.put(`/konfirmasi_pembayaran/${id}`, formData, {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -38,16 +38,16 @@ export const JarakPengirimanUpdate = async (id, formData) => {
     });
     return {
       success: true,
-      data: res.status,
+      data: res.data.data,
     };
   } catch (error) {
     return error.response.data;
   }
 };
 
-export const getJarakPengirimanById = async (id) => {
+export const getKonfirmasiPembayaranById = async (id) => {
   try {
-    const res = await useClient.get(`/jarak_pengiriman/${id}`, {
+    const res = await useClient.get(`/konfirmasi_pembayaran/${id}`, {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${localStorage.getItem("token")}`,

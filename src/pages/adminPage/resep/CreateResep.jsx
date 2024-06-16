@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { GetProduk, GetBahanBaku, ResepCreate } from "../../../api/resep";
 import { useNavigate } from "react-router-dom";
 
@@ -14,25 +15,45 @@ const CreateResep = () => {
   const [produk, setProduk] = useState([]);
   const [bahan_baku, setBahanBaku] = useState([]);
 
+  // const handleChange = (e) => {
+  //   setFormData((prevData) => ({
+  //     ...prevData,
+  //     [e.target.name]: e.target.value,
+  //   }));
+
+  //   console.log(formData, "form data drop");
+  // };
+
   const handleChange = (e) => {
+    const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
-      [e.target.name]: e.target.value,
+      [name]: value,
     }));
-
-    console.log(formData, "form data drop");
   };
 
-  useEffect(() => {
-    GetProduk().then((res) => {
-      setProduk(res);
-    });
-  }, []);
+  // useEffect(() => {
+  //   GetProduk().then((res) => {
+  //     setProduk(res);
+  //   });
+  // }, []);
+
+  // useEffect(() => {
+  //   GetBahanBaku().then((res) => {
+  //     setBahanBaku(res);
+  //   });
+  // }, []);
 
   useEffect(() => {
-    GetBahanBaku().then((res) => {
-      setBahanBaku(res);
-    });
+    const fetchData = async () => {
+      const produkData = await GetProduk();
+      setProduk(produkData);
+
+      const bahanBakuData = await GetBahanBaku();
+      setBahanBaku(bahanBakuData);
+    };
+
+    fetchData();
   }, []);
 
   const handleClearForm = () => {
@@ -43,10 +64,44 @@ const CreateResep = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   console.log(formData, "form ges");
+  //   ResepCreate(formData).then((res) => {
+  //     if (res.success) {
+  //       toast.success("Resep berhasil ditambahkan", {
+  //         position: "top-right",
+  //         autoClose: 2000,
+  //         hideProgressBar: false,
+  //         closeOnClick: true,
+  //         pauseOnHover: true,
+  //         draggable: true,
+  //         progress: undefined,
+  //         theme: "colored",
+  //       });
+  //       setTimeout(() => {
+  //         navigate("/dashboard-admin/resep");
+  //       }, 2000);
+  //       handleClearForm();
+  //     } else {
+  //       toast.error("Resep gagal ditambahkan", {
+  //         position: "top-right",
+  //         autoClose: 2000,
+  //         hideProgressBar: false,
+  //         closeOnClick: true,
+  //         pauseOnHover: true,
+  //         draggable: true,
+  //         progress: undefined,
+  //         theme: "colored",
+  //       });
+  //     }
+  //   });
+  //   console.log(formData);
+  // };
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData, "form ges");
-    ResepCreate(formData).then((res) => {
+    try {
+      const res = await ResepCreate(formData);
       if (res.success) {
         toast.success("Resep berhasil ditambahkan", {
           position: "top-right",
@@ -58,7 +113,6 @@ const CreateResep = () => {
           progress: undefined,
           theme: "colored",
         });
-        console.log(formData, "form data drop");
         setTimeout(() => {
           navigate("/dashboard-admin/resep");
         }, 2000);
@@ -75,8 +129,18 @@ const CreateResep = () => {
           theme: "colored",
         });
       }
-    });
-    console.log(formData);
+    } catch (error) {
+      toast.error("Terjadi kesalahan saat menambahkan resep", {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+    }
   };
 
   console.log("formdata", formData);

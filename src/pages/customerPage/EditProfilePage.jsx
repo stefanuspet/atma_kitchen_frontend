@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
-import { ProfileUpdate, getProfile } from "../api/auth";
+import { ProfileUpdate, getProfile } from "../../api/auth";
 import { ToastContainer, toast } from "react-toastify";
-import HomeUserLayout from "../Layout/HomeUserLayout";
+import HomeCustomerLayout from "../../Layout/HomeCustomerLayout";
 import "react-toastify/dist/ReactToastify.css";
 
 const EditProfilePage = ({ }) => {
@@ -61,7 +61,7 @@ const EditProfilePage = ({ }) => {
         });
     };
     return (
-        <HomeUserLayout>
+        <HomeCustomerLayout>
             <div className="flex justify-center items-center h-screen w-full">
                 <div className="w-1/3 h-[30rem] bg-white bg-opacity-70 text-black">
                     <h1 className="flex justify-center text-2xl font-bold mt-10">Edit Profile User</h1>
@@ -133,7 +133,7 @@ const EditProfilePage = ({ }) => {
                                         style={{ fontSize: "14px" }}
                                     >
                                         <Link
-                                            to="/homeUser"
+                                            to="/homeCustomer"
                                             className="text-[#AD773D] font-serif text-center mt-1 mb-8 hover:teks-[#AD773D]"
                                             style={{ fontSize: "14px" }}
                                         >
@@ -147,7 +147,7 @@ const EditProfilePage = ({ }) => {
                 </div>
                 <ToastContainer />
             </div>
-        </HomeUserLayout>
+        </HomeCustomerLayout>
     );
 };
 

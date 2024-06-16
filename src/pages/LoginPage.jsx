@@ -34,7 +34,7 @@ const LoginPage = () => {
         } else if (res.abilities === "OWNER") {
           navigate("/dashboard-owner");
         } else if (res.abilities === "Customer") {
-          navigate("/");
+          navigate("/home");
         }
         toast.success("Login success");
         console.log(res.token, "Login sukses");
