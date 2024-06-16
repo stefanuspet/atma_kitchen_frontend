@@ -32,14 +32,13 @@ export const KonfirmasiPembayaranUpdate = async (id, formData) => {
   try {
     const res = await useClient.put(`/konfirmasi_pembayaran/${id}`, formData, {
       headers: {
-        "Content-Type": "multipart/form-data",
         "Content-Type": "application/json",
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     });
     return {
       success: true,
-      data: res.status,
+      data: res.data.data,
     };
   } catch (error) {
     return error.response.data;

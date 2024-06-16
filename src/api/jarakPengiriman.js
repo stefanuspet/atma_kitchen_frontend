@@ -14,11 +14,24 @@ export const GetTransaksi = async () => {
   }
 };
 
+export const GetJarakPengiriman = async () => {
+  try {
+    const res = await useClient.get("/jarak_pengiriman", {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
+    return res.data.data;
+  } catch (error) {
+    return error.response.data;
+  }
+};
+
 export const JarakPengirimanUpdate = async (id, formData) => {
   try {
-    const res = await useClient.put(`/transaksi/${id}`, formData, {
+    const res = await useClient.put(`/jarak_pengiriman/${id}`, formData, {
       headers: {
-        "Content-Type": "multipart/form-data",
         "Content-Type": "application/json",
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
@@ -34,7 +47,7 @@ export const JarakPengirimanUpdate = async (id, formData) => {
 
 export const getJarakPengirimanById = async (id) => {
   try {
-    const res = await useClient.get(`/transaksi/${id}`, {
+    const res = await useClient.get(`/jarak_pengiriman/${id}`, {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${localStorage.getItem("token")}`,

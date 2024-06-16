@@ -1,6 +1,6 @@
 import React from "react";
 import { MdDashboard } from "react-icons/md";
-import { FaMoneyBillWaveAlt } from "react-icons/fa";
+import { FaMoneyBillWaveAlt, FaReceipt } from "react-icons/fa";
 import { FaSignOutAlt } from "react-icons/fa";
 import { logout } from "../../api/auth";
 import { NavLink } from "react-router-dom";
@@ -42,7 +42,16 @@ const Sidebar = () => {
               </div>
             </NavLink>
           </li>
-
+          <li>
+            <NavLink to="/dashboard-owner/laporan">
+              <div className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                <FaReceipt />
+                <span className="flex-1 ms-3 whitespace-nowrap text-wrap">
+                  Laporan
+                </span>
+              </div>
+            </NavLink>
+          </li>
           <li>
             <button onClick={handleLogout}>
               <div className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">

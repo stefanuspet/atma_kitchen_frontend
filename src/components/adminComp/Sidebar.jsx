@@ -87,6 +87,30 @@ const Sidebar = () => {
             </NavLink>
           </li>
           <li>
+            <NavLink to="/dashboard-admin/konfirmasi-pembayaran">
+              <div className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                <GiShoppingBag />
+                <span className="flex-1 ms-3 whitespace-nowrap">Konfirmasi Pembayaran</span>
+              </div>
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/dashboard-admin/status">
+              <div className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                <GiShoppingBag />
+                <span className="flex-1 ms-3 whitespace-nowrap">Status Pesanan</span>
+              </div>
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/dashboard-admin/pembatalan-pesanan">
+              <div className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                <GiShoppingBag />
+                <span className="flex-1 ms-3 whitespace-nowrap">Pembatalan Pesanan</span>
+              </div>
+            </NavLink>
+          </li>
+          <li>
             <button onClick={handleLogout}>
               <div className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                 <FaSignOutAlt />

@@ -117,16 +117,13 @@ const JarakPengiriman = () => {
               >
                 <div className="p-5">
                   <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                    nama produk : {item.nama_produk}
+                    id transaksi: {item.id}
                   </p>
                   <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
                     jarak : {item.jarak}
                   </p>
                   <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                    harga : {item.harga}
-                  </p>
-                  <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                    waktu : {item.waktu}
+                    ongkir : {item.ongkir}
                   </p>
                   <div className="flex justify-end gap-x-2">
                     <NavLink

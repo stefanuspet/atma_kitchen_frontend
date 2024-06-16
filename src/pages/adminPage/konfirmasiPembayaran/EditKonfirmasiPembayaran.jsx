@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { useParams, useNavigate } from "react-router-dom";
-import {
-    KonfirmasiPembayaranUpdate,
-    getKonfirmasiPembayaranById,
-} from "../../../api/konfirmasiPembayaran";
+import { KonfirmasiPembayaranUpdate, getKonfirmasiPembayaranById } from "../../../api/konfirmasiPembayaran";
 
 const EditKonfirmasiPembayaran = () => {
     const param = useParams();
