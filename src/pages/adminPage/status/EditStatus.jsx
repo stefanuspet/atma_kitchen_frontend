@@ -13,47 +13,14 @@ const EditStatus = () => {
 
     useEffect(() => {
         getStatusById(id).then((res) => {
+            console.log(res, "ress");
             if (res && res.status_pesanan) {
                 setFormData({
                     status_pesanan: res.status_pesanan,
                 });
             }
         });
-    }, []);
-
-    // useEffect(() => {
-    //     getStatusById(id)
-    //         .then((res) => {
-    //             if (res && res.status_pengiriman) {
-    //                 setFormData({
-    //                     status_pengiriman: res.status_pengiriman
-    //                 });
-    //             } else {
-    //                 toast.error("Failed to fetch status data", {
-    //                     position: "top-right",
-    //                     autoClose: 2000,
-    //                     hideProgressBar: false,
-    //                     closeOnClick: true,
-    //                     pauseOnHover: true,
-    //                     draggable: true,
-    //                     progress: undefined,
-    //                     theme: "colored",
-    //                 });
-    //             }
-    //         })
-    //         .catch((err) => {
-    //             toast.error("Error fetching status data", {
-    //                 position: "top-right",
-    //                 autoClose: 2000,
-    //                 hideProgressBar: false,
-    //                 closeOnClick: true,
-    //                 pauseOnHover: true,
-    //                 draggable: true,
-    //                 progress: undefined,
-    //                 theme: "colored",
-    //             });
-    //         });
-    // }, [id]);
+    }, [id]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -61,16 +28,7 @@ const EditStatus = () => {
             ...prevData,
             [name]: value,
         }));
-
-        console.log(formData);
     };
-
-    // const handleChange = (e) => {
-    //     setFormData((prevData) => ({
-    //       ...prevData,
-    //       [e.target.name]: e.target.value,
-    //     }));
-    //   };
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -78,7 +36,7 @@ const EditStatus = () => {
         StatusUpdate(id, formData)
             .then((res) => {
                 if (res.success) {
-                    toast.success("Status Pengiriman berhasil diupdate", {
+                    toast.success("Status Pesanan berhasil diupdate", {
                         position: "top-right",
                         autoClose: 2000,
                         hideProgressBar: false,
@@ -92,7 +50,7 @@ const EditStatus = () => {
                         navigate("/dashboard-admin/status");
                     }, 2000);
                 } else {
-                    toast.error("Gagal Update Status Pengiriman", {
+                    toast.error("Gagal Update Status Pesanan", {
                         position: "top-right",
                         autoClose: 2000,
                         hideProgressBar: false,
@@ -104,30 +62,30 @@ const EditStatus = () => {
                     });
                 }
             })
-        // .catch((err) => {
-        //     toast.error("Gagal Update Status Pengiriman", {
-        //         position: "top-right",
-        //         autoClose: 2000,
-        //         hideProgressBar: false,
-        //         closeOnClick: true,
-        //         pauseOnHover: true,
-        //         draggable: true,
-        //         progress: undefined,
-        //         theme: "colored",
-        //     });
-        // });
+            .catch((err) => {
+                toast.error("Error updating status pesanan", {
+                    position: "top-right",
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "colored",
+                });
+            });
     };
 
     return (
         <div className="w-full relative">
-            <h1 className="text-2xl font-bold">Edit Status Pengiriman</h1>
+            <h1 className="text-2xl font-bold">Edit Status Pesanan</h1>
             <form onSubmit={handleSubmit} className="px-20 py-10">
                 <div className="mb-5">
                     <label
                         htmlFor="status_pesanan"
                         className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                     >
-                        Status Pengiriman
+                        Status Pesanan
                     </label>
                     <select
                         id="status_pesanan"
@@ -136,10 +94,12 @@ const EditStatus = () => {
                         value={formData.status_pesanan}
                         onChange={handleChange}
                     >
-                        <option value="sudah di pick-up">Sudah di Pick-Up</option>
-                        <option value="sedang dikirim">Sedang Dikirim</option>
-                        <option value="diambil sendiri">Diambil Sendiri</option>
-                        <option value="selesai">Selesai</option>
+                        {/* <option value="Siap di Pick-Up">Siap di Pick-Up</option> */}
+                        <option value="Sudah Dibayar">Sudah Dibayar</option>
+                        <option value="Siap di Pick-Up">Siap di Pick-Up</option>
+                        <option value="Sudah di Pick-Up">Sudah di Pick-Up</option>
+                        <option value="Sedang Dikirim">Sedang Dikirim</option>
+                        <option value="Diambil Sendiri">Diambil Sendiri</option>
                     </select>
                 </div>
                 <button

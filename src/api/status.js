@@ -2,7 +2,7 @@ import useClient from ".";
 
 export const GetTransaksi = async () => {
   try {
-      const res = await useClient.get('/transaksi', {
+      const res = await useClient.get('/statusTransaksi', {
           headers: {
               "Content-Type": "application/json",
               Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -17,22 +17,21 @@ export const GetTransaksi = async () => {
 
 export const getStatusById = async (id) => {
   try {
-    const res = await useClient.get(`/transaksi/${id}`, {
+    const res = await useClient.get(`/statusTransaksi/${id}`, {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     });
-    return res.data.data;
+    return res.data;
   } catch (error) {
-    // return error.response.data;
     return error.response ? error.response.data : error.message;
   }
 };
 
 export const StatusUpdate = async (id, formData) => {
   try {
-      const res = await useClient.put(`/transaksi/${id}/status`, formData, {
+      const res = await useClient.put(`/statusTransaksi/${id}`, formData, {
           headers: {
               "Content-Type": "application/json",
               Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -50,30 +49,3 @@ export const StatusUpdate = async (id, formData) => {
       };
   }
 };
-
-// export const JarakPengirimanDelete = async (id) => {
-//   try {
-//     const res = await useClient.delete(`/jarak_pengiriman/${id}`, {
-//       headers: {
-//         "Content-Type": "application/json",
-//         Authorization: `Bearer ${localStorage.getItem("token")}`,
-//       },
-//     });
-//     return res.data;
-//   } catch (error) {
-//     return error.response.data;
-//   }
-// };
-// export const searchJarakPengiriman = async (search) => {
-//   try {
-//     const res = await useClient.get(`/jarak_pengiriman/search/${search}`, {
-//       headers: {
-//         "Content-Type": "application/json",
-//         Authorization: `Bearer ${localStorage.getItem("token")}`,
-//       },
-//     });
-//     return res.data.data;
-//   } catch (error) {
-//     return error.response.data;
-//   }
-// };

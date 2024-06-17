@@ -10,20 +10,11 @@ const Status = () => {
     const fetchData = () => {
         GetTransaksi()
             .then((res) => {
-                const filteredData = res.filter(item => item.status_pesanan === "Sudah Dibayar" && item.status_pesanan !== "Selesai");
-                setStatus(filteredData);
+                console.log(res);
+                setStatus(res);
             })
             .catch((err) => {
-                toast.error("Gagal mengambil data transaksi", {
-                    position: "top-right",
-                    autoClose: 2000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "colored",
-                });
+                console.log(err);
             });
     };
 

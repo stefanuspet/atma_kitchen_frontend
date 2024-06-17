@@ -2,7 +2,7 @@ import useClient from ".";
 
 export const GetTransaksi = async () => {
   try {
-    const res = await useClient.get("/transaksi", {
+    const res = await useClient.get("/sudahBayar", {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${localStorage.getItem("token")}`,
