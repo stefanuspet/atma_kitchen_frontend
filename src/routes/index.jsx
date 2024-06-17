@@ -44,6 +44,7 @@ import Status from "../pages/adminPage/status/Status";
 import EditStatus from "../pages/adminPage/status/EditStatus";
 import EditProfilePage from "../pages/customerPage/EditProfilePage";
 import HistoryPage from "../pages/customerPage/HistoryPage";
+import EditHistoryPage from "../pages/customerPage/EditHistory";
 import OurMenuPage from "../pages/OurMenuPage";
 import TampilProdukPage from "../pages/customerPage/TampilProdukPage";
 import CartPage from "../pages/customerPage/CartPage";
@@ -59,6 +60,7 @@ import LaporanPage from "../pages/managerPage/laporan/LaporanPage.jsx";
 import LaporanPageOwner from "../pages/ownerPage/laporan/LaporanPageOwner.jsx";
 import PemrosesanPesanan from "../pages/managerPage/pesanan/PemrosesanPesanan.jsx";
 import BatalPesanan from "../pages/adminPage/batalPesanan/BatalPesanan.jsx";
+
 // import LaporanPageOwner from "../pages/ownerPage/LaporanPageOwner.jsx";
 
 const router = createBrowserRouter([
@@ -370,6 +372,14 @@ const router = createBrowserRouter([
     element: (
       <ProtectedRoutes>
         <HistoryPage />
+      </ProtectedRoutes>
+    ),
+  },
+  {
+    path: "/customers/history/edit/:id",
+    element: (
+      <ProtectedRoutes>
+        <EditHistoryPage />
       </ProtectedRoutes>
     ),
   },

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { GetTransaksicus, searchHistory } from "../../api/history";
 import { ToastContainer, toast } from "react-toastify";
 import HomeUserLayout from "../../Layout/HomeCustomerLayout";
@@ -123,6 +123,14 @@ const HistoryCard = ({ item }) => (
         <p className="mb-3 font-normal text-gray-700">Status Pesanan: {item.status_pesanan}</p>
         <p className="mb-3 font-normal text-gray-700">Jenis Pengiriman: {item.jenis_pengiriman}</p>
         <p className="mb-3 font-normal text-gray-700">Tip: {item.tip}</p>
+        <div className="flex justify-end gap-x-2">
+            <NavLink
+                to={`/customers/history/edit/${item.id}`}
+                className="p-2 rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            >
+                Edit
+            </NavLink>
+        </div>
     </div>
 );
 
