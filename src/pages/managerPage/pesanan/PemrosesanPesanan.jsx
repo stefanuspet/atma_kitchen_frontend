@@ -55,7 +55,7 @@ const PemrosesanPesanan = () => {
                     <div>
                       <p>No Nota : {item.no_nota}</p>
                       <p>Nama : {item.nama_customer}</p>
-                      <p>Jam : {item.jam_ambil.substring(0, 5)}</p>
+                      {/* <p>Jam : {item.jam_ambil.substring(0, 5)}</p> */}
                       {/* get produk from array */}
                       {Array.isArray(item.produk) ? (
                         // Jika produk adalah array, ambil semua produk

@@ -13,22 +13,22 @@ const TampilProdukPage = () => {
   const param = useParams();
   const navigate = useNavigate();
   const [loyang, setLoyang] = useState("");
-  const [loyangActive, setLoyangActive] = useState({
-    satuLoyang: false,
-    setengahLoyang: false,
-  });
+  // const [loyangActive, setLoyangActive] = useState({
+  //   satuLoyang: false,
+  //   setengahLoyang: false,
+  // });
 
-  const handleLoyang = (e) => {
-    if (e.target.id === "satuLoyang") {
-      setLoyangActive({ satuLoyang: true, setengahLoyang: false });
-      console.log("satuLoyang");
-      setLoyang("satu");
-    } else {
-      setLoyangActive({ satuLoyang: false, setengahLoyang: true });
-      setLoyang("setengah");
-      console.log("setengahLoyang");
-    }
-  };
+  // const handleLoyang = (e) => {
+  //   if (e.target.id === "satuLoyang") {
+  //     setLoyangActive({ satuLoyang: true, setengahLoyang: false });
+  //     console.log("satuLoyang");
+  //     setLoyang("satu");
+  //   } else {
+  //     setLoyangActive({ satuLoyang: false, setengahLoyang: true });
+  //     setLoyang("setengah");
+  //     console.log("setengahLoyang");
+  //   }
+  // };
 
   const idProduk = param.id;
   console.log(idProduk);
@@ -44,11 +44,6 @@ const TampilProdukPage = () => {
   };
 
   const handleAddToCart = () => {
-    if (loyang === "") {
-      toast.error("Pilih Loyang terlebih dahulu");
-      return;
-    }
-
     // check if product already in cart
     getCartById(idProduk).then((res) => {
       console.log(res, "rses");
@@ -57,7 +52,6 @@ const TampilProdukPage = () => {
     addToCart({
       id_produk: idProduk,
       jumlah_produk: count,
-      loyang: loyang,
     }).then((res) => {
       console.log(res);
       toast.success("Produk berhasil dimasukkan ke keranjang");
@@ -89,20 +83,20 @@ const TampilProdukPage = () => {
               <h1 className="font-bold text-5xl text-[#1d1d5e]">
                 {data.nama_produk}
               </h1>
-              <div className="py-5 flex justify-between">
+              {/* <div className="py-5 flex justify-between">
                 <p className="text-3xl font-bold text-[#802727]">
                   Rp. {data.harga_satu_loyang} / 1 Loyang
                 </p>
                 <p className="text-3xl font-bold text-[#802727]">
                   Rp. {data.harga_setengah_loyang} / ½ Loyang
                 </p>
-              </div>
-              <p className="text-xl font-bold text-[#1d1d5e] pb-5">
+              </div> */}
+              <p className="text-xl font-bold text-[#1d1d5e] py-5">
                 Stok: {data.stok_produk}
               </p>
               <hr className="border-t-2 py-5 w-full border-[#1d1d5e]"></hr>
-              <p className="text-lg">Pilih Loyang : </p>
-              <div className="flex justify-between">
+              {/* <p className="text-lg">Pilih Loyang : </p> */}
+              {/* <div className="flex justify-between">
                 <button
                   onClick={handleLoyang}
                   type="button"
@@ -127,7 +121,7 @@ const TampilProdukPage = () => {
                 >
                   <span className="inline-block mr">Produk 1/2 Loyang</span>
                 </button>
-              </div>
+              </div> */}
               <p className="text-lg mt-6">Jumlah : </p>
               <div className="flex items-center mt-2">
                 <button

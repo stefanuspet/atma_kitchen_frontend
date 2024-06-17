@@ -59,6 +59,8 @@ import LaporanPage from "../pages/managerPage/laporan/LaporanPage.jsx";
 import LaporanPageOwner from "../pages/ownerPage/laporan/LaporanPageOwner.jsx";
 import PemrosesanPesanan from "../pages/managerPage/pesanan/PemrosesanPesanan.jsx";
 import BatalPesanan from "../pages/adminPage/batalPesanan/BatalPesanan.jsx";
+import CreatePengeluaranLain from "../pages/managerPage/pengeluaranlain/CreatePengeluaranLain.jsx";
+import EditPengeluaranLain from "../pages/managerPage/pengeluaranlain/EditPengeluaranLain.jsx";
 // import LaporanPageOwner from "../pages/ownerPage/LaporanPageOwner.jsx";
 
 const router = createBrowserRouter([
@@ -279,6 +281,14 @@ const router = createBrowserRouter([
       {
         path: "/dashboard-manager/pengeluaranlain",
         element: <PengeluaranLain />,
+      },
+      {
+        path: "/dashboard-manager/pengeluaranlain/create",
+        element: <CreatePengeluaranLain />,
+      },
+      {
+        path: "/dashboard-manager/pengeluaranlain/edit/:id",
+        element: <EditPengeluaranLain />,
       },
     ],
   },

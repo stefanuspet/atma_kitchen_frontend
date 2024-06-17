@@ -152,7 +152,8 @@ const CartPage = () => {
                       <h1 className="text-2xl font-bold">
                         {item.produk.nama_produk}
                       </h1>
-                      {item.loyang === "setengah" ? (
+                      <p>{item.produk.harga}</p>
+                      {/* {item.loyang === "setengah" ? (
                         <p className="text-lg">
                           Rp. {item.produk.harga_setengah_loyang}
                         </p>
@@ -160,8 +161,8 @@ const CartPage = () => {
                         <p className="text-lg">
                           Rp. {item.produk.harga_satu_loyang}
                         </p>
-                      )}
-                      <p className="text-lg">Produk {item.loyang} Loyang</p>
+                      )} */}
+                      {/* <p className="text-lg">Produk {item.loyang} Loyang</p> */}
                     </div>
                     <div>
                       <p className="font-semibold p-2">

@@ -72,11 +72,14 @@ const OurMenuPage = () => {
                       {item.nama_produk}
                     </h1>
                     <p className="text-white text-s font-serif ml-[20px]">
+                      Harga Rp. {item.harga}
+                    </p>
+                    {/* <p className="text-white text-s font-serif ml-[20px]">
                       Per Satu Loyang Rp. {item.harga_satu_loyang}
                     </p>
                     <p className="text-white text-s font-serif ml-[20px]">
                       Per Setengah Loyang Rp. {item.harga_setengah_loyang}
-                    </p>
+                    </p> */}
                     <p className="text-white text-s font-serif ml-[20px]">
                       Stok {item.stok_produk} Loyang
                     </p>

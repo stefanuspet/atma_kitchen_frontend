@@ -148,11 +148,14 @@ const ProdukAdmin = () => {
                     </h5>
                   </a>
                   <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                    Harga : {item.harga}
+                  </p>
+                  {/* <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
                     Harga Satu Loyang : {item.harga_satu_loyang}
                   </p>
                   <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
                     Harga Setengah Loyang : {item.harga_setengah_loyang}
-                  </p>
+                  </p> */}
                   <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
                     stok : {item.stok_produk} Loyang
                   </p>
@@ -200,11 +203,14 @@ const ProdukAdmin = () => {
                   </h5>
                 </a>
                 <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                  Harga : {item.harga}
+                </p>
+                {/* <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
                   Harga Satu Loyang : {item.harga_satu_loyang}
                 </p>
                 <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
                   Harga Setengah Loyang : {item.harga_setengah_loyang}
-                </p>
+                </p> */}
                 <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
                   stok : {item.stok_produk} Loyang
                 </p>

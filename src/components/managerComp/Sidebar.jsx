@@ -38,14 +38,14 @@ const Sidebar = () => {
               </div>
             </NavLink>
           </li>
-          <li>
+          {/* <li>
             <NavLink to="/dashboard-manager/jabatan">
               <div className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                 <FaUserCog />
                 <span className="flex-1 ms-3 whitespace-nowrap">Jabatan</span>
               </div>
             </NavLink>
-          </li>
+          </li> */}
           <li>
             <NavLink to="/dashboard-manager/karyawan">
               <div className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
@@ -75,7 +75,7 @@ const Sidebar = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/dashboard-manager/cat_pengeluaran_lain">
+            <NavLink to="/dashboard-manager/pengeluaranlain">
               <div className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                 <FaMoneyCheckAlt />
                 <span className="flex-1 ms-3 whitespace-nowrap text-wrap">
