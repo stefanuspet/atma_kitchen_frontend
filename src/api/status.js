@@ -2,7 +2,22 @@ import useClient from ".";
 
 export const GetTransaksi = async () => {
   try {
-    const res = await useClient.get("/transaksi", {
+      const res = await useClient.get('/transaksi', {
+          headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+      });
+      return res.data;
+  } catch (error) {
+      console.error(error);
+      throw error;
+  }
+};
+
+export const getStatusById = async (id) => {
+  try {
+    const res = await useClient.get(`/transaksi/${id}`, {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -10,52 +25,29 @@ export const GetTransaksi = async () => {
     });
     return res.data.data;
   } catch (error) {
-    return error.response.data;
+    // return error.response.data;
+    return error.response ? error.response.data : error.message;
   }
 };
 
-export const GetJarakPengiriman = async () => {
+export const StatusUpdate = async (id, formData) => {
   try {
-    const res = await useClient.get("/jarak_pengiriman", {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-    });
-    return res.data.data;
+      const res = await useClient.put(`/transaksi/${id}/status`, formData, {
+          headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+      });
+      return {
+          success: true,
+          data: res.data,
+      };
   } catch (error) {
-    return error.response.data;
-  }
-};
-
-export const JarakPengirimanUpdate = async (id, formData) => {
-  try {
-    const res = await useClient.put(`/jarak_pengiriman/${id}`, formData, {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-    });
-    return {
-      success: true,
-      data: res.status,
-    };
-  } catch (error) {
-    return error.response.data;
-  }
-};
-
-export const getJarakPengirimanById = async (id) => {
-  try {
-    const res = await useClient.get(`/jarak_pengiriman/${id}`, {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-    });
-    return res.data.data;
-  } catch (error) {
-    return error.response.data;
+      return {
+          success: false,
+          data: {},
+          error: error.response ? error.response.data : error.message,
+      };
   }
 };
 

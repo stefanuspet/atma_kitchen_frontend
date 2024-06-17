@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+// import App from "../App.jsx";
 import HomePage from "../pages/HomePage";
-import HomeUser from "../pages/HomeUser";
+import HomeCustomer from "../pages/customerPage/HomeCustomer";
 import { ToastContainer } from "react-toastify";
 import DashboardAdmin from "../pages/adminPage/DashboardAdmin";
 import ProtectedRoutes from "./ProtectedRoute";
@@ -37,8 +38,12 @@ import CreateResep from "../pages/adminPage/resep/CreateResep";
 import EditResep from "../pages/adminPage/resep/EditResep";
 import JarakPengiriman from "../pages/adminPage/jarakPengiriman/JarakPengiriman";
 import EditJarakPengiriman from "../pages/adminPage/jarakPengiriman/EditJarakPengiriman";
-import EditProfilePage from "../pages/EditProfilePage";
-import HistoryPage from "../pages/HistoryPage";
+import KonfirmasiPembayaran from "../pages/adminPage/konfirmasiPembayaran/KonfirmasiPembayaran";
+import EditKonfirmasiPembayaran from "../pages/adminPage/konfirmasiPembayaran/EditKonfirmasiPembayaran";
+import Status from "../pages/adminPage/status/Status";
+import EditStatus from "../pages/adminPage/status/EditStatus";
+import EditProfilePage from "../pages/customerPage/EditProfilePage";
+import HistoryPage from "../pages/customerPage/HistoryPage";
 import OurMenuPage from "../pages/OurMenuPage";
 import TampilProdukPage from "../pages/customerPage/TampilProdukPage";
 import CartPage from "../pages/customerPage/CartPage";
@@ -53,6 +58,8 @@ import Transaksi from "../pages/Transaksi.jsx";
 import LaporanPage from "../pages/managerPage/laporan/LaporanPage.jsx";
 import LaporanPageOwner from "../pages/ownerPage/laporan/LaporanPageOwner.jsx";
 import PemrosesanPesanan from "../pages/managerPage/pesanan/PemrosesanPesanan.jsx";
+import BatalPesanan from "../pages/adminPage/batalPesanan/BatalPesanan.jsx";
+import LaporanPageOwner from "../pages/ownerPage/LaporanPageOwner.jsx";
 
 const router = createBrowserRouter([
   {
@@ -63,10 +70,10 @@ const router = createBrowserRouter([
     path: "/",
     element: <HomePage />,
   },
-  {
-    path: "/homeUser",
-    element: <HomeUser />,
-  },
+  // {
+  //   path: "/homeCustomer",
+  //   element: <HomeCustomer />,
+  // },
   {
     path: "/login",
     element: <LoginPage />,
@@ -191,6 +198,26 @@ const router = createBrowserRouter([
         path: "/dashboard-admin/jarak-pengiriman/edit/:id",
         element: <EditJarakPengiriman />,
       },
+      {
+        path: "/dashboard-admin/konfirmasi-pembayaran",
+        element: <KonfirmasiPembayaran />,
+      },
+      {
+        path: "/dashboard-admin/konfirmasi-pembayaran/edit/:id",
+        element: <EditKonfirmasiPembayaran />,
+      },
+      {
+        path: "/dashboard-admin/status",
+        element: <Status />,
+      },
+      {
+        path: "/dashboard-admin/status/edit/:id",
+        element: <EditStatus />,
+      },
+      {
+        path: "/dashboard-admin/pembatalan-pesanan",
+        element: <BatalPesanan />,
+      },
     ],
   },
   {
@@ -271,6 +298,10 @@ const router = createBrowserRouter([
         path: "/dashboard-owner/gaji",
         element: <Gaji />,
       },
+      {
+        path: "/dashboard-owner/laporan",
+        element: <LaporanPageOwner />,
+      },
       // {
       //   path: "/dashboard-owner/gaji/create",
       //   element: <CreateGaji />,
@@ -322,7 +353,7 @@ const router = createBrowserRouter([
     path: "/home",
     element: (
       <ProtectedRoutes>
-        <HomeUser />
+        <HomeCustomer />
       </ProtectedRoutes>
     ),
   },

@@ -53,13 +53,13 @@ export const GetProduk = async () => {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     });
-    return res.data.data.data;
+    return res.data.data;
   } catch (error) {
     return error.response.data;
   }
 };
 
-export const ResepGet = async () => {
+export const GetResep = async () => {
   try {
     const res = await useClient.get("/resep", {
       headers: {
@@ -78,14 +78,10 @@ export const ResepCreate = async (formData) => {
     const res = await useClient.post("/resep", formData, {
       headers: {
         "Content-Type": "multipart/form-data",
-        "constent-type": "application/json", // "constent-type": "application/json
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     });
-    return {
-      success: true,
-      data: res.status,
-    }; // Mengembalikan data yang diterima dari backend
+    return res.data.data;
   } catch (error) {
     return error.response.data;
   }
@@ -158,6 +154,7 @@ export const ResepSearch = async (search) => {
     const res = await useClient.get(`/resep/search/${search}`, {
       headers: {
         "Content-Type": "application/json",
+        // Accept: "application/json",
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     });

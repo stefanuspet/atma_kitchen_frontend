@@ -1,23 +1,22 @@
 import useClient from ".";
-// const token = localStorage.getItem("token");
 
-export const getHistory = async () => {
+export const GetTransaksicus = async () => {
     try {
-        const res = await useClient.get("/customers/history", {
-            headers: {
-                "Content-Type": "application/json",
-                Authorization: `Bearer ${localStorage.getItem("token")}`,
-            },
-        });
-        return res.data.data;
+      const res = await useClient.get("/transaksi_cus", {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+      return res.data.data;
     } catch (error) {
-        return error.data;
+      return error.response.data;
     }
-};
+  };
 
 export const searchHistory = async (search) => {
     try {
-        const res = await useClient.get(`/customers/history/search/${search}`, {
+        const res = await useClient.get(`transaksi_cus/search/${search}`, {
             headers: {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${localStorage.getItem("token")}`,

@@ -1,14 +1,14 @@
 import React from "react";
-import HomeUserLayout from "../Layout/HomeUserLayout";
-import Logo from "../assets/images/logo.png";
-import Vector from "../assets/images/Vector.png";
+import HomeCustomerLayout from "../../Layout/HomeCustomerLayout";
+import Logo from "../../assets/images/logo.png";
+import Vector from "../../assets/images/Vector.png";
 import { FaInstagram } from "react-icons/fa6";
 import { FaWhatsapp } from "react-icons/fa6";
 import { FaLocationDot } from "react-icons/fa6";
 
-const HomeUser = () => {
+const HomeCustomer = () => {
   return (
-    <HomeUserLayout>
+    <HomeCustomerLayout>
       <div className="container mx-auto w-full h-screen flex justify-center items-center">
         <div>
           <img src={Logo} alt="Logo" width={300} height={300} />
@@ -61,8 +61,8 @@ const HomeUser = () => {
           </div>
         </div>
       </div>
-    </HomeUserLayout>
+    </HomeCustomerLayout>
   );
 };
 
-export default HomeUser;
+export default HomeCustomer;
