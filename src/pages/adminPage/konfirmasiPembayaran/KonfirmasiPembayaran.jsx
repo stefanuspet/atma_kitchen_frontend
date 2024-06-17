@@ -8,20 +8,31 @@ const KonfirmasiPembayaran = () => {
     const [transaksi, setTransaksi] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
 
-    const fetchData = async () => {
-        setIsLoading(true);
-        try {
-            const transaksiRes = await GetTransaksi();
-            const filteredTransaksi = transaksiRes.filter(transaksi =>
-                ["Siap Dipick-Up", "Sudah Dipick-Up", "Sedang Dikirim", "Selesai"].includes(transaksi.status_pesanan)
-            );
-            setTransaksi(filteredTransaksi);
-        } catch (err) {
-            console.error("Error fetching data:", err);
-            toast.error("Error fetching data");
-        } finally {
-            setIsLoading(false);
-        }
+    // const fetchData = async () => {
+    //     setIsLoading(true);
+    //     try {
+    //         const transaksiRes = await GetTransaksi();
+    //         const filteredTransaksi = transaksiRes.filter(transaksi =>
+    //             ["Siap Dipick-Up", "Sudah Dipick-Up", "Sedang Dikirim", "Selesai"].includes(transaksi.status_pesanan)
+    //         );
+    //         setTransaksi(filteredTransaksi);
+    //     } catch (err) {
+    //         console.error("Error fetching data:", err);
+    //         toast.error("Error fetching data");
+    //     } finally {
+    //         setIsLoading(false);
+    //     }
+    // };
+
+    const fetchData = () => {
+        GetTransaksi()
+            .then((res) => {
+                console.log(res);
+                setTransaksi(res);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
     };
 
     useEffect(() => {
@@ -40,7 +51,7 @@ const KonfirmasiPembayaran = () => {
                 <div className="h-0.5 bg-white"></div>
 
                 <div className="grid grid-cols-3 gap-7 pt-5">
-                    {isLoading  ? (
+                    {isLoading ? (
                         <div>Loading...</div>
                     ) : (
                         transaksi.map((item, index) => (

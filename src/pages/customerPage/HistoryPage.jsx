@@ -120,8 +120,7 @@ const HistoryCard = ({ item }) => (
         <p className="mb-3 font-normal text-gray-700">Tanggal Transaksi: {item.tanggal_transaksi}</p>
         <p className="mb-3 font-normal text-gray-700">Harga Total: {item.harga_total}</p>
         <p className="mb-3 font-normal text-gray-700">Metode Pembayaran: {item.metode_pembayaran}</p>
-        <p className="mb-3 font-normal text-gray-700">Status Pembayaran: {item.status_pembayaran}</p>
-        <p className="mb-3 font-normal text-gray-700">Status Pengiriman: {item.status_pengiriman}</p>
+        <p className="mb-3 font-normal text-gray-700">Status Pesanan: {item.status_pesanan}</p>
         <p className="mb-3 font-normal text-gray-700">Jenis Pengiriman: {item.jenis_pengiriman}</p>
         <p className="mb-3 font-normal text-gray-700">Tip: {item.tip}</p>
     </div>
