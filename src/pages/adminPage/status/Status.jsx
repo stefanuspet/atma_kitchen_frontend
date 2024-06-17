@@ -10,7 +10,7 @@ const Status = () => {
     const fetchData = () => {
         GetTransaksi()
             .then((res) => {
-                const filteredData = res.filter(item => item.status_pembayaran === "lunas" && item.status_pengiriman !== "selesai");
+                const filteredData = res.filter(item => item.status_pesanan === "Sudah Dibayar" && item.status_pesanan !== "Selesai");
                 setStatus(filteredData);
             })
             .catch((err) => {
@@ -51,7 +51,7 @@ const Status = () => {
                                     id transaksi: {item.id}
                                 </p>
                                 <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                                    Status Pengiriman: {item.status_pengiriman}
+                                    Status Pengiriman: {item.status_pesanan}
                                 </p>
                                 <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
                                     Jenis Pengiriman: {item.jenis_pengiriman}
