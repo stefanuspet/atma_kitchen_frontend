@@ -10,20 +10,11 @@ const Status = () => {
     const fetchData = () => {
         GetTransaksi()
             .then((res) => {
-                const filteredData = res.filter(item => item.status_pembayaran === "lunas" && item.status_pengiriman !== "selesai");
-                setStatus(filteredData);
+                console.log(res);
+                setStatus(res);
             })
             .catch((err) => {
-                toast.error("Gagal mengambil data transaksi", {
-                    position: "top-right",
-                    autoClose: 2000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "colored",
-                });
+                console.log(err);
             });
     };
 
@@ -51,7 +42,7 @@ const Status = () => {
                                     id transaksi: {item.id}
                                 </p>
                                 <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                                    Status Pengiriman: {item.status_pengiriman}
+                                    Status Pengiriman: {item.status_pesanan}
                                 </p>
                                 <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
                                     Jenis Pengiriman: {item.jenis_pengiriman}

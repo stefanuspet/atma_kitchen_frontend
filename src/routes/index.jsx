@@ -44,6 +44,7 @@ import Status from "../pages/adminPage/status/Status";
 import EditStatus from "../pages/adminPage/status/EditStatus";
 import EditProfilePage from "../pages/customerPage/EditProfilePage";
 import HistoryPage from "../pages/customerPage/HistoryPage";
+import EditHistoryPage from "../pages/customerPage/EditHistory";
 import OurMenuPage from "../pages/OurMenuPage";
 import TampilProdukPage from "../pages/customerPage/TampilProdukPage";
 import CartPage from "../pages/customerPage/CartPage";
@@ -55,8 +56,12 @@ import EditPembelianBahanBaku from "../pages/managerPage/pembelianBahanBaku/Edit
 import PengeluaranLain from "../pages/managerPage/pengeluaranlain/PengeluaranLain.jsx";
 import EditGaji from "../pages/ownerPage/gaji/EditGaji.jsx";
 import Transaksi from "../pages/Transaksi.jsx";
+import LaporanPage from "../pages/managerPage/laporan/LaporanPage.jsx";
+import LaporanPageOwner from "../pages/ownerPage/laporan/LaporanPageOwner.jsx";
+import PemrosesanPesanan from "../pages/managerPage/pesanan/PemrosesanPesanan.jsx";
 import BatalPesanan from "../pages/adminPage/batalPesanan/BatalPesanan.jsx";
-import LaporanPageOwner from "../pages/ownerPage/LaporanPageOwner.jsx";
+
+// import LaporanPageOwner from "../pages/ownerPage/LaporanPageOwner.jsx";
 
 const router = createBrowserRouter([
   {
@@ -226,6 +231,14 @@ const router = createBrowserRouter([
     ),
     children: [
       {
+        path: "/dashboard-manager/pemrosesanpesanan",
+        element: <PemrosesanPesanan />,
+      },
+      {
+        path: "/dashboard-manager/laporan",
+        element: <LaporanPage />,
+      },
+      {
         path: "/dashboard-manager",
         element: <DashboardManager />,
       },
@@ -296,6 +309,10 @@ const router = createBrowserRouter([
       //   element: <CreateGaji />,
       // },
       {
+        path: "/dashboard-owner/laporan",
+        element: <LaporanPageOwner />,
+      },
+      {
         path: "/dashboard-owner/gaji/edit/:id",
         element: <EditGaji />,
       },
@@ -355,6 +372,14 @@ const router = createBrowserRouter([
     element: (
       <ProtectedRoutes>
         <HistoryPage />
+      </ProtectedRoutes>
+    ),
+  },
+  {
+    path: "/customers/history/edit/:id",
+    element: (
+      <ProtectedRoutes>
+        <EditHistoryPage />
       </ProtectedRoutes>
     ),
   },

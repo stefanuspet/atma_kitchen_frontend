@@ -10,6 +10,7 @@ import { FaSignOutAlt } from "react-icons/fa";
 import { logout } from "../../api/auth";
 import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { FaReceipt } from "react-icons/fa";
 
 const Sidebar = () => {
   const navigate = useNavigate();
@@ -79,6 +80,26 @@ const Sidebar = () => {
                 <FaMoneyCheckAlt />
                 <span className="flex-1 ms-3 whitespace-nowrap text-wrap">
                   Pencatatan Pengeluaran Lain
+                </span>
+              </div>
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/dashboard-manager/laporan">
+              <div className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                <FaReceipt />
+                <span className="flex-1 ms-3 whitespace-nowrap text-wrap">
+                  Laporan
+                </span>
+              </div>
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/dashboard-manager/pemrosesanpesanan">
+              <div className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                <FaArrowsDownToPeople />
+                <span className="flex-1 ms-3 whitespace-nowrap text-wrap">
+                  Penjualan
                 </span>
               </div>
             </NavLink>

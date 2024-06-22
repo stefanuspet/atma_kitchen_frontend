@@ -1,22 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { useParams, useNavigate } from "react-router-dom";
-import { StatusUpdate, getStatusById } from "../../../api/status";
+import { HistoryUpdate, searchHistory } from "../../api/history";
 
-const EditStatus = () => {
+const EditHistory = () => {
     const navigate = useNavigate();
     const param = useParams();
     const [formData, setFormData] = useState({
-        status_pesanan: "",
+        status_pesanan: "Selesai",
     });
     const id = param.id;
 
     useEffect(() => {
-        getStatusById(id).then((res) => {
+        searchHistory(id).then((res) => {
             console.log(res, "ress");
             if (res && res.status_pesanan) {
                 setFormData({
-                    status_pesanan: res.status_pesanan,
+                    status_pesanan: "Selesai",
                 });
             }
         });
@@ -33,7 +33,7 @@ const EditStatus = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(formData);
-        StatusUpdate(id, formData)
+        HistoryUpdate(id, formData)
             .then((res) => {
                 if (res.success) {
                     toast.success("Status Pesanan berhasil diupdate", {
@@ -47,7 +47,7 @@ const EditStatus = () => {
                         theme: "colored",
                     });
                     setTimeout(() => {
-                        navigate("/dashboard-admin/status");
+                        navigate("/customers/history");
                     }, 2000);
                 } else {
                     toast.error("Gagal Update Status Pesanan", {
@@ -94,12 +94,7 @@ const EditStatus = () => {
                         value={formData.status_pesanan}
                         onChange={handleChange}
                     >
-                        {/* <option value="Siap di Pick-Up">Siap di Pick-Up</option> */}
-                        <option value="Sudah Dibayar">Sudah Dibayar</option>
-                        <option value="Siap di Pick-Up">Siap di Pick-Up</option>
-                        <option value="Sudah di Pick-Up">Sudah di Pick-Up</option>
-                        <option value="Sedang Dikirim">Sedang Dikirim</option>
-                        <option value="Diambil Sendiri">Diambil Sendiri</option>
+                        <option value="Selesai">Selesai</option>
                     </select>
                 </div>
                 <button
@@ -114,4 +109,4 @@ const EditStatus = () => {
     );
 };
 
-export default EditStatus;
+export default EditHistory;

@@ -60,3 +60,18 @@ export const addProdukToDetailTransaksi = async (data, id) => {
     return error.response;
   }
 };
+
+// list pesansan
+export const listPesananHariIni = async () => {
+  try {
+    const res = await useClient.get("/pesananhariini", {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
+    return res.data;
+  } catch (error) {
+    return error.response.data;
+  }
+};
