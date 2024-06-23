@@ -16,7 +16,7 @@ export const GetTransaksi = async () => {
 
 export const GetJarakPengiriman = async () => {
   try {
-    const res = await useClient.get("/jarak_pengiriman", {
+    const res = await useClient.get("/transaksi", {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -30,7 +30,7 @@ export const GetJarakPengiriman = async () => {
 
 export const JarakPengirimanUpdate = async (id, formData) => {
   try {
-    const res = await useClient.put(`/jarak_pengiriman/${id}`, formData, {
+    const res = await useClient.put(`/transaksi/${id}`, formData, {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -47,7 +47,7 @@ export const JarakPengirimanUpdate = async (id, formData) => {
 
 export const getJarakPengirimanById = async (id) => {
   try {
-    const res = await useClient.get(`/jarak_pengiriman/${id}`, {
+    const res = await useClient.get(`/transaksi/${id}`, {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${localStorage.getItem("token")}`,
