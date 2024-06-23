@@ -7,8 +7,8 @@ const CreateProduk = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     nama_produk: "",
-    harga_satu_loyang: "",
-    harga_setengah_loyang: "",
+    // harga_satu_loyang: "",
+    harga: "",
     stok_produk: "",
     max_produksi: "",
     image: null,
@@ -47,20 +47,20 @@ const CreateProduk = () => {
       }
 
       // harga tidak boleh kurang dari 0
-      if (formData.harga_satu_loyang < 0) {
-        toast.error("Harga tidak boleh kurang dari 0", {
-          position: "top-right",
-          autoClose: 2000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "colored",
-        });
-        return;
-      }
-      if (formData.harga_setengah_loyang < 0) {
+      // if (formData.harga_satu_loyang < 0) {
+      //   toast.error("Harga tidak boleh kurang dari 0", {
+      //     position: "top-right",
+      //     autoClose: 2000,
+      //     hideProgressBar: false,
+      //     closeOnClick: true,
+      //     pauseOnHover: true,
+      //     draggable: true,
+      //     progress: undefined,
+      //     theme: "colored",
+      //   });
+      //   return;
+      // }
+      if (formData.harga < 0) {
         toast.error("Harga tidak boleh kurang dari 0", {
           position: "top-right",
           autoClose: 2000,
@@ -109,7 +109,7 @@ const CreateProduk = () => {
   const handleClearForm = () => {
     setFormData({
       nama_produk: "",
-      harga_satu_loyang: "",
+      // harga_satu_loyang: "",
       stok_produk: "",
     });
 
@@ -143,7 +143,7 @@ const CreateProduk = () => {
             onChange={handleChange}
           />
         </div>
-        <div className="mb-5">
+        {/* <div className="mb-5">
           <label
             htmlFor="harga_satu_loyang"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -160,22 +160,22 @@ const CreateProduk = () => {
             value={formData.harga_satu_loyang}
             onChange={handleChange}
           />
-        </div>
+        </div> */}
         <div className="mb-5">
           <label
-            htmlFor="harga_setengah_loyang"
+            htmlFor="harga"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
           >
-            Harga Setengah Loyang
+            Harga
           </label>
           <input
             type="number"
-            id="harga_setengah_loyang"
-            name="harga_setengah_loyang"
+            id="harga"
+            name="harga"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="Setengah Loyang"
+            placeholder="Harga"
             required
-            value={formData.harga_setengah_loyang}
+            value={formData.harga}
             onChange={handleChange}
           />
         </div>

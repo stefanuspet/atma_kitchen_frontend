@@ -59,6 +59,7 @@ const Checkout = () => {
     });
 
     Promise.all(promises).then((results) => {
+      console.log(results, "results");
       setData(results);
     });
   }, []);
@@ -156,7 +157,7 @@ const Checkout = () => {
       potongan_poin: formData.poin,
       harga_total: subTotal,
     };
-    console.log(data);
+    console.log(data, "dataaa");
     addCheckout(data).then((res) => {
       console.log(res.data.data, "berhasil checkout");
       toast.success("Pesanan Berhasil Dibuat");
@@ -211,7 +212,8 @@ const Checkout = () => {
                   </div>
                   <div>
                     <h1 className="text-2xl font-bold">{item.nama_produk}</h1>
-                    {dataloyang[index].loyang === "setengah" ? (
+                    <p className="text-lg">{item.harga}</p>
+                    {/* {dataloyang[index].loyang === "setengah" ? (
                       <>
                         <p className="text-lg">{item.harga_setengah_loyang}</p>
                         <p className="text-lg">Setengah Loyang</p>
@@ -221,7 +223,7 @@ const Checkout = () => {
                         <p className="text-lg">{item.harga_satu_loyang}</p>
                         <p className="text-lg">satu loyang</p>
                       </>
-                    )}
+                    )} */}
                   </div>
                   <div>
                     <p className="font-semibold p-2">
@@ -234,12 +236,11 @@ const Checkout = () => {
                     </div>
                   </div>
                   <div>
-                    {dataloyang[index].loyang === "setengah" ? (
+                    <p className="text-lg">
+                      {dataloyang[index].jumlah_produk * item.harga}
+                    </p>
+                    {/* {dataloyang[index].loyang === "setengah" ? (
                       <>
-                        <p className="text-lg">
-                          {item.harga_setengah_loyang *
-                            dataloyang[index].jumlah_produk}
-                        </p>
                       </>
                     ) : (
                       <>
@@ -248,7 +249,7 @@ const Checkout = () => {
                             dataloyang[index].jumlah_produk}
                         </p>
                       </>
-                    )}
+                    )} */}
                   </div>
                 </div>
               </div>
