@@ -9,6 +9,8 @@ import { FaSignOutAlt } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { GiChipsBag } from "react-icons/gi";
 import { logout } from "../../api/auth";
+import { CiMoneyBill } from 'react-icons/ci';
+
 
 const Sidebar = () => {
   const navigate = useNavigate();
@@ -107,6 +109,16 @@ const Sidebar = () => {
               <div className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                 <GiShoppingBag />
                 <span className="flex-1 ms-3 whitespace-nowrap">Pembatalan Pesanan</span>
+              </div>
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to='/dashboard-admin/penarikan-saldo'>
+              <div className='flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group'>
+                <CiMoneyBill />
+                <span className='flex-1 ms-3 whitespace-nowrap'>
+                  Penarikan Saldo
+                </span>
               </div>
             </NavLink>
           </li>

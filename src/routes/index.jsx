@@ -62,6 +62,7 @@ import PemrosesanPesanan from "../pages/managerPage/pesanan/PemrosesanPesanan.js
 import BatalPesanan from "../pages/adminPage/batalPesanan/BatalPesanan.jsx";
 import CreatePengeluaranLain from "../pages/managerPage/pengeluaranlain/CreatePengeluaranLain.jsx";
 import EditPengeluaranLain from "../pages/managerPage/pengeluaranlain/EditPengeluaranLain.jsx";
+import PenarikanSaldo from "../pages/adminPage/penarikanSaldo/PenarikanSalso.jsx";
 // import LaporanPageOwner from "../pages/ownerPage/LaporanPageOwner.jsx";
 
 const router = createBrowserRouter([
@@ -220,6 +221,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard-admin/pembatalan-pesanan",
         element: <BatalPesanan />,
+      },
+      {
+        path: '/dashboard-admin/penarikan-saldo',
+        element: <PenarikanSaldo />,
       },
     ],
   },
